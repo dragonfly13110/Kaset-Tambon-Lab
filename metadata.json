@@ -1,0 +1,7 @@
+{
+  "name": "Kaset Tambon Lab",
+  "description": "A portfolio website showcasing projects for Kaset Tambon (Agricultural Subdistrict) under the Department of Agricultural Extension (DOAE).",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
