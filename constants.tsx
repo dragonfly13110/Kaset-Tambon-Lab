@@ -25,7 +25,7 @@ import {
   Facebook,
 } from './components/Icons';
 
-export const LOGO_SRC = "/assets/kaset-tambon-logo.png";
+export const LOGO_SRC = "https://res.cloudinary.com/dzksawh1d/image/upload/v1758098508/kaset-tambon-logo_vptuy4.png";
 
 export const CONTACTS: ReadonlyArray<Contact> = [
   { label: "Facebook", value: "Rebellious Kaset Tambon", href: "https://www.facebook.com/RebelliousKasetTambon", icon: Facebook },
