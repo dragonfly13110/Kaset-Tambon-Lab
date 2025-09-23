@@ -8,7 +8,14 @@ import { ShieldCheck, ArrowRight, ChevronDown, Facebook } from './Icons';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section
+      className="relative overflow-hidden py-16 md:py-24"
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dzksawh1d/image/upload/v1758641138/BG_oujuvu.webp')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <Glow />
       <img
         src={LOGO_SRC}
