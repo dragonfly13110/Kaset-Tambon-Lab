@@ -72,6 +72,14 @@ export const PROJECTS: ReadonlyArray<Project> = [
     tag: "ชุมชนออนไลน์",
     category: "knowledge",
   },
+  {
+    icon: <BookOpen className="h-6 w-6" aria-hidden />,
+    title: "คู่มือทะเบียนเกษตรกร ปี 2568 (ฉบับดิจิทัล)",
+    desc: "ขั้นตอน, หลักเกณฑ์, และเงื่อนไขต่างๆ เกี่ยวกับการขึ้นทะเบียนเกษตรกรได้อย่างสะดวกและรวดเร็ว",
+    href: "https://farmer-reg.netlify.app/",
+    tag: "องค์ความรู้",
+    category: "knowledge",
+  },
 ];
 
 export const SKILLS: ReadonlyArray<Skill> = [
