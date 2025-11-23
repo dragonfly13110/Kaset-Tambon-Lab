@@ -10,6 +10,7 @@ import AiToolsSection from './components/AiToolsSection';
 import Footer from './components/Footer';
 import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
+import InfoSection from './components/InfoSection';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<'home' | 'news'>('home');
@@ -30,7 +31,7 @@ const App: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [mouseX, mouseY]);
-  
+
   // Update body class based on current page to handle scroll-smooth
   useEffect(() => {
     if (page === 'home') {
@@ -42,120 +43,61 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-[#060912] text-slate-200 relative overflow-hidden">
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <motion.div
-          className="absolute top-[-10rem] left-[-10rem] h-[25rem] w-[25rem] rounded-full bg-emerald-500/20 blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.1, 1],
-          }}
-          // FIX: Add `as const` to string literals to fix type inference issues.
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'mirror' as const,
-            ease: 'easeInOut' as const,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-[-10rem] right-[-15rem] h-[30rem] w-[30rem] rounded-full bg-cyan-500/10 blur-3xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 40, 0],
-          }}
-          // FIX: Add `as const` to string literals to fix type inference issues.
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            repeatType: 'mirror' as const,
-            ease: 'easeInOut' as const,
-          }}
-        />
-         <motion.div
-          className="absolute bottom-[5rem] left-[-5rem] h-[20rem] w-[20rem] rounded-full bg-fuchsia-500/10 blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -50, 0],
-            rotate: [0, 15, 0]
-          }}
-          // FIX: Add `as const` to string literals to fix type inference issues.
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            repeatType: 'mirror' as const,
-            ease: 'easeInOut' as const,
-          }}
-        />
+    <div className="min-h-screen bg-surface-50 text-slate-900 relative overflow-hidden font-sans selection:bg-agri-500/30 selection:text-agri-900">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Modern Gradient Background */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-agri-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-tech-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" style={{ animationDelay: '2s' }} />
+
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       </div>
 
-      {/* Spotlight Cursor */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 -z-10 rounded-full opacity-40 blur-3xl"
-        // FIX: Moved motion values `x` and `y` into the style prop to resolve TypeScript error.
-        style={{
-          width: '400px',
-          height: '400px',
-          translateX: '-50%',
-          translateY: '-50%',
-          background:
-            'radial-gradient(circle, rgba(16,185,129,0.3) 0%, rgba(16,185,129,0) 60%)',
-          x: smoothedMouseX,
-          y: smoothedMouseY,
-        }}
-      />
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <Header page={page} setPage={setPage} />
 
-      <a
-        href="#projects"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-emerald-600 focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900"
-      >
-        ข้ามไปยังโปรเจกต์
-      </a>
+        {page === 'home' ? (
+          <>
+            <main className="flex-grow space-y-24 pb-24 pt-12 md:space-y-32 md:pt-20">
+              <Hero />
+              <Projects />
+              <NewsSection onNavigateToNews={() => setPage('news')} />
+              <VisionSection />
+              <AiToolsSection />
+              <WeatherSection />
+              <AboutMeSection />
+              <InfoSection />
+            </main>
+            <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">
+              <a
+                href="#projects"
+                className="rounded-2xl bg-white/80 px-3 py-2 text-xs font-bold text-slate-700 shadow-lg backdrop-blur hover:bg-white hover:text-agri-600 transition-all duration-200 hover:scale-105 border border-white/20"
+                aria-label="ไปยังโปรเจกต์"
+              >
+                โปรเจกต์
+              </a>
+              <a
+                href="#news-section"
+                className="rounded-2xl bg-white/80 px-3 py-2 text-xs font-bold text-slate-700 shadow-lg backdrop-blur hover:bg-white hover:text-agri-600 transition-all duration-200 hover:scale-105 border border-white/20"
+                aria-label="ไปยังข่าวสาร"
+              >
+                ข่าวสาร
+              </a>
+              <a
+                href="#about-me"
+                className="rounded-2xl bg-white/80 px-3 py-2 text-xs font-bold text-slate-700 shadow-lg backdrop-blur hover:bg-white hover:text-agri-600 transition-all duration-200 hover:scale-105 border border-white/20"
+                aria-label="ไปยังเกี่ยวกับฉัน"
+              >
+                เกี่ยวกับฉัน
+              </a>
+            </div>
+          </>
+        ) : (
+          <NewsPage onNavigateHome={() => setPage('home')} />
+        )}
 
-      <Header page={page} setPage={setPage} />
-
-      {page === 'home' ? (
-        <>
-          <main>
-            <Hero />
-            <Projects />
-            <NewsSection onNavigateToNews={() => setPage('news')} />
-            <VisionSection />
-            <AiToolsSection />
-            <WeatherSection />
-            <AboutMeSection />
-          </main>
-          <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">
-            <a
-              href="#projects"
-              className="rounded-2xl bg-emerald-500/90 px-3 py-2 text-xs font-bold text-slate-900 shadow-lg backdrop-blur hover:bg-emerald-400 transition-transform duration-200 hover:scale-105"
-              aria-label="ไปยังโปรเจกต์"
-            >
-              โปรเจกต์
-            </a>
-             <a
-              href="#news-section"
-              className="rounded-2xl bg-emerald-500/90 px-3 py-2 text-xs font-bold text-slate-900 shadow-lg backdrop-blur hover:bg-emerald-400 transition-transform duration-200 hover:scale-105"
-              aria-label="ไปยังข่าวสาร"
-            >
-              ข่าวสาร
-            </a>
-            <a
-              href="#about-me"
-              className="rounded-2xl bg-emerald-500/90 px-3 py-2 text-xs font-bold text-slate-900 shadow-lg backdrop-blur hover:bg-emerald-400 transition-transform duration-200 hover:scale-105"
-              aria-label="ไปยังเกี่ยวกับฉัน"
-            >
-              เกี่ยวกับฉัน
-            </a>
-          </div>
-        </>
-      ) : (
-        <NewsPage onNavigateHome={() => setPage('home')} />
-      )}
-      
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

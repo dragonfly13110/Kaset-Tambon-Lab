@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --agri-primary: #10b981;
+  --tech-primary: #0ea5e9;
+  --surface-bg: #f8fafc;
+}
+
+body {
+  background-color: var(--surface-bg);
+  color: #1e293b;
+  font-family: 'Sarabun', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection */
+::selection {
+  background: rgba(16, 185, 129, 0.2);
+  color: #064e3b;
+}
+
+/* Utilities */
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+
+  .tech-card {
+    @apply bg-white rounded-xl border border-surface-200 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .text-gradient-agri {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-agri-600 to-agri-400;
+  }
+
+  .text-gradient-tech {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-tech-600 to-tech-400;
+  }
+
+  .font-display {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

@@ -24,12 +24,12 @@ const InfoSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">About Me</h3>
-          <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-300">
-            <li><strong className="font-medium text-white/80">เกิด:</strong> 1992</li>
+          <h3 className="text-sm font-bold uppercase tracking-wider text-agri-600 font-display">About Me</h3>
+          <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600 font-sans">
+            <li><strong className="font-bold text-slate-800">เกิด:</strong> 1992</li>
             <li>นักวิชาการส่งเสริมการเกษตรปฏิบัติการ</li>
             <li>เกษตรตำบล</li>
-            <li><strong className="font-medium text-white/80">งานที่รับผิดชอบ:</strong> งานกลุ่มส่งเสริมและพัฒนาการผลิต, งานประชาสัมพันธ์</li>
+            <li><strong className="font-bold text-slate-800">งานที่รับผิดชอบ:</strong> งานกลุ่มส่งเสริมและพัฒนาการผลิต, งานประชาสัมพันธ์</li>
           </ul>
         </motion.div>
       </Container>

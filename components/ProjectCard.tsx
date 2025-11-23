@@ -9,9 +9,9 @@ import { ExternalLink } from './Icons';
 // Removed Variants type annotation to fix build error.
 const cardVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.98 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
     // FIX: Add `as const` to help TypeScript infer a literal type, resolving the framer-motion type error for 'ease'.
     transition: { duration: 0.4, ease: 'easeOut' as const }
@@ -68,26 +68,20 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur-sm hover:border-emerald-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70"
+        className="group relative flex h-full flex-col justify-between rounded-2xl bg-white p-6 shadow-soft border border-surface-200 transition-all duration-300 hover:shadow-lg hover:border-agri-200 focus:outline-none overflow-hidden"
       >
-        <div
-          className="pointer-events-none absolute -inset-px -z-10 rounded-3xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background: "radial-gradient(480px circle at 0 0, rgba(16,185,129,.25), transparent 40%), radial-gradient(480px circle at 100% 0, rgba(99,102,241,.20), transparent 40%)",
-          }}
-          aria-hidden
-        />
-
-        <div>
-          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-300 ring-1 ring-inset ring-emerald-400/20">
+        <div className="relative z-10">
+          <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-agri-50 text-agri-600 group-hover:bg-agri-500 group-hover:text-white transition-colors duration-300 shadow-sm">
             {icon}
           </div>
-          <h3 className="text-lg font-semibold text-white md:text-xl">{title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-300">{desc}</p>
+          <h3 className="text-xl font-bold font-display text-slate-900 group-hover:text-agri-600 transition-colors duration-300">{title}</h3>
+          <p className="mt-3 text-sm leading-relaxed text-slate-500 font-sans">{desc}</p>
         </div>
-        <div className="mt-5 flex items-center justify-between">
-          <div className="inline-flex items-center rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] text-emerald-300 ring-1 ring-inset ring-emerald-400/20">{tag}</div>
-          <ExternalLink className="h-5 w-5 text-slate-300 transition group-hover:text-white" aria-hidden />
+        <div className="relative z-10 mt-6 flex items-center justify-between pt-4 border-t border-surface-100">
+          <div className="inline-flex items-center rounded-full bg-agri-50 px-2.5 py-0.5 text-xs font-medium text-agri-700 ring-1 ring-inset ring-agri-600/20">{tag}</div>
+          <div className="flex items-center gap-2 text-xs font-medium text-agri-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Open App <ExternalLink className="h-3 w-3" aria-hidden />
+          </div>
         </div>
       </motion.a>
     </motion.div>

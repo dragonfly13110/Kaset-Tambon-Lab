@@ -28,8 +28,8 @@ const listContainerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: 'easeOut' as const }
   }
@@ -38,10 +38,10 @@ const itemVariants = {
 // --- Skill Components ---
 
 const levelColorMap: Record<SkillLevel, string> = {
-  "สอนเพื่อนได้": "bg-emerald-500/10 text-emerald-300 ring-emerald-400/20",
-  "พอตัว": "bg-cyan-500/10 text-cyan-300 ring-cyan-400/20",
-  "พอใช้": "bg-amber-500/10 text-amber-300 ring-amber-400/20",
-  "พอเอาตัวรอด": "bg-slate-500/10 text-slate-300 ring-slate-400/20",
+  "สอนเพื่อนได้": "bg-agri-50 text-agri-700 ring-agri-600/20",
+  "พอตัว": "bg-tech-50 text-tech-700 ring-tech-600/20",
+  "พอใช้": "bg-slate-50 text-slate-600 ring-slate-400/20",
+  "พอเอาตัวรอด": "bg-slate-50 text-slate-500 ring-slate-300/20",
 };
 
 const SkillItem: React.FC<{ skill: Skill }> = ({ skill }) => {
@@ -49,11 +49,11 @@ const SkillItem: React.FC<{ skill: Skill }> = ({ skill }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="grid grid-cols-1 md:grid-cols-12 md:items-center gap-x-6 gap-y-2 border-b border-white/10 py-3 last:border-b-0"
+      className="grid grid-cols-1 md:grid-cols-12 md:items-center gap-x-6 gap-y-2 border-b border-surface-200 py-3 last:border-b-0"
     >
       <div className="flex items-center gap-4 md:col-span-4">
-        <Icon className="h-6 w-6 flex-shrink-0 text-emerald-300" aria-hidden />
-        <h3 className="font-semibold text-white">{name}</h3>
+        <Icon className="h-6 w-6 flex-shrink-0 text-agri-500" aria-hidden />
+        <h3 className="font-semibold font-display text-slate-800">{name}</h3>
       </div>
       <div className="pl-10 md:pl-0 md:col-span-3">
         <span className={`inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ring-inset ${levelColorMap[level]}`}>
@@ -61,7 +61,7 @@ const SkillItem: React.FC<{ skill: Skill }> = ({ skill }) => {
         </span>
       </div>
       <div className="pl-10 md:pl-0 md:col-span-5">
-        <p className="text-sm text-slate-300">{details}</p>
+        <p className="text-sm text-slate-600 font-sans">{details}</p>
       </div>
     </motion.div>
   );
@@ -87,7 +87,7 @@ const SkillsModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <>
       <motion.div
-        className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-[60] bg-slate-900/20 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -105,21 +105,21 @@ const SkillsModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.3, ease: 'easeOut' as const }}
       >
-        <div className="relative flex h-full max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-2xl backdrop-blur-lg">
-          <div className="flex flex-shrink-0 items-center justify-between border-b border-white/10 p-4 md:p-6">
-            <h2 id="skill-modal-title" className="text-lg font-semibold text-white">
+        <div className="relative flex h-full max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-surface-200 bg-white shadow-2xl">
+          <div className="flex flex-shrink-0 items-center justify-between border-b border-surface-200 p-4 md:p-6 bg-surface-50/80 backdrop-blur-sm relative z-10">
+            <h2 id="skill-modal-title" className="text-xl font-bold font-display text-slate-800">
               ทักษะและความสามารถ
             </h2>
             <button
               onClick={onClose}
-              className="rounded-full p-1 text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              className="rounded-full p-1 text-slate-400 transition hover:bg-surface-200 hover:text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-agri-500"
               aria-label="ปิด"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
           <motion.div
-            className="flex-1 overflow-y-auto p-4 md:p-6"
+            className="flex-1 overflow-y-auto p-4 md:p-6 relative z-10"
             variants={listContainerVariants}
             initial="hidden"
             animate="visible"
@@ -154,48 +154,55 @@ const AboutMeSection: React.FC = () => {
           subtitle="ทักษะที่สั่งสมจากประสบการณ์ทำงานจริงในบทบาทเกษตรตำบล"
         />
         <div className="mt-6 text-center">
-            <Button variant="soft" onClick={() => setIsModalOpen(true)}>
-                <span>คลิกเพื่อดูว่าเกษตรตำบลช่วยอะไรท่านได้บ้าง</span>
-                <ArrowRight className="h-4 w-4" />
-            </Button>
+          <Button variant="soft" onClick={() => setIsModalOpen(true)}>
+            <span>คลิกเพื่อดูว่าเกษตรตำบลช่วยอะไรท่านได้บ้าง</span>
+            <ArrowRight className="h-4 w-4" />
+          </Button>
         </div>
 
-        <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-white/[.03] p-6 shadow-lg backdrop-blur-sm md:p-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
-                {/* About Me Info */}
-                <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                    <h3 className="text-lg font-semibold text-white mb-4">ข้อมูลผู้จัดทำ</h3>
-                    <ul className="space-y-2 text-sm text-slate-300">
-                        <li><strong className="font-medium text-white/80">เกิด:</strong> 1992</li>
-                        <li>นักวิชาการส่งเสริมการเกษตรปฏิบัติการ</li>
-                        <li>เกษตรตำบล</li>
-                        <li><strong className="font-medium text-white/80">งานที่รับผิดชอบ:</strong> งานกลุ่มส่งเสริมและพัฒนาการผลิต, งานประชาสัมพันธ์</li>
-                    </ul>
-                </div>
-
-                {/* Contact Info */}
-                <div className="flex flex-col items-center text-center md:items-start md:text-left border-t border-white/10 pt-8 md:border-t-0 md:pt-0 md:border-l md:border-white/10 md:pl-8">
-                    <h3 className="text-lg font-semibold text-white mb-4">ช่องทางการติดต่อ</h3>
-                    <div className="flex justify-center md:justify-start">
-                        {CONTACTS.map((contact) => (
-                            <a
-                                key={contact.label}
-                                href={contact.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-start gap-3 text-left transition"
-                                aria-label={`${contact.label}: ${contact.value}`}
-                            >
-                                <contact.icon className="h-5 w-5 mt-0.5 flex-shrink-0 text-emerald-300 transition group-hover:text-emerald-200" aria-hidden />
-                                <div>
-                                    <div className="font-medium text-white transition group-hover:text-emerald-300">{contact.label}</div>
-                                    <div className="text-sm text-slate-300 transition group-hover:text-slate-100">{contact.value}</div>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </div>
+        <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-surface-200 bg-white p-6 shadow-soft md:p-8">
+          {/* Modern Gradient Background */}
+          <div
+            className="absolute inset-0 opacity-30 blur-2xl"
+            style={{
+              background: "radial-gradient(circle at 10% 10%, rgba(16,185,129,0.1), transparent 50%), radial-gradient(circle at 90% 90%, rgba(56,189,248,0.1), transparent 50%)",
+            }}
+          />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 relative z-10">
+            {/* About Me Info */}
+            <div className="flex flex-col items-center text-center md:items-start md:text-left">
+              <h3 className="text-lg font-bold font-display text-slate-800 mb-4">ข้อมูลผู้จัดทำ</h3>
+              <ul className="space-y-2 text-sm text-slate-600 font-sans">
+                <li><strong className="font-bold text-agri-600">เกิด:</strong> 1992</li>
+                <li>นักวิชาการส่งเสริมการเกษตรปฏิบัติการ</li>
+                <li>เกษตรตำบล</li>
+                <li><strong className="font-bold text-agri-600">งานที่รับผิดชอบ:</strong> งานกลุ่มส่งเสริมและพัฒนาการผลิต, งานประชาสัมพันธ์</li>
+              </ul>
             </div>
+
+            {/* Contact Info */}
+            <div className="flex flex-col items-center text-center md:items-start md:text-left border-t border-surface-200 pt-8 md:border-t-0 md:pt-0 md:border-l md:border-surface-200 md:pl-8">
+              <h3 className="text-lg font-bold font-display text-slate-800 mb-4">ช่องทางการติดต่อ</h3>
+              <div className="flex justify-center md:justify-start">
+                {CONTACTS.map((contact) => (
+                  <a
+                    key={contact.label}
+                    href={contact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-start gap-3 text-left transition"
+                    aria-label={`${contact.label}: ${contact.value}`}
+                  >
+                    <contact.icon className="h-5 w-5 mt-0.5 flex-shrink-0 text-agri-500 transition group-hover:text-agri-600" aria-hidden />
+                    <div>
+                      <div className="font-medium text-slate-700 transition group-hover:text-agri-600 font-display">{contact.label}</div>
+                      <div className="text-sm text-slate-500 transition group-hover:text-slate-700 font-sans">{contact.value}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         <AnimatePresence>

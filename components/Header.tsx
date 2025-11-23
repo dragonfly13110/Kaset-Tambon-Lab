@@ -31,37 +31,44 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur">
-      <Container className="flex items-center justify-between py-3">
+    <header className="sticky top-0 z-50 border-b border-white/20 bg-white/80 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-white/60">
+      <Container className="flex items-center justify-between py-4">
         <button
           onClick={() => {
             setPage('home');
             window.scrollTo(0, 0);
           }}
-          className="flex items-center gap-3 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+          className="flex items-center gap-3 group focus:outline-none"
           aria-label="กลับหน้าหลัก"
         >
-          <BrandLogo />
-          <div>
-            <div className="text-sm font-bold tracking-wide text-white">Kaset Tambon Lab</div>
-            <div className="text-[10px] uppercase tracking-wider text-emerald-300/85">DOAE • Portfolio</div>
+          <div className="relative p-1.5 rounded-xl bg-gradient-to-br from-agri-50 to-tech-50 shadow-inner group-hover:shadow-md transition-all duration-300">
+            <BrandLogo />
+          </div>
+          <div className="text-left">
+            <div className="text-xl font-bold font-display text-slate-800 tracking-tight group-hover:text-agri-600 transition-colors">Kaset Tambon</div>
+            <div className="text-[10px] font-sans uppercase tracking-widest text-slate-500 font-semibold group-hover:text-tech-500 transition-colors">Smart Lab</div>
           </div>
         </button>
-        <nav className="hidden items-center gap-6 md:flex" aria-label="หลัก">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="หลัก">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.label}
               onClick={() => handleNavClick(item)}
-              className="relative text-sm text-slate-300 transition hover:text-white"
+              className="relative text-sm font-medium text-slate-600 transition-all duration-300 hover:text-agri-600"
             >
-              <span className="after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-emerald-400 after:transition-all hover:after:w-full">
-                {item.label}
-              </span>
+              <span className="relative z-10">{item.label}</span>
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-agri-500 rounded-full transition-all duration-300 group-hover:w-full"></span>
             </button>
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button onClick={() => handleNavClick({ href: '#projects', label: 'ดูทั้งหมด' })}>ดูทั้งหมด</Button>
+          <Button
+            onClick={() => handleNavClick({ href: '#projects', label: 'ดูทั้งหมด' })}
+            variant="primary"
+            className="font-medium shadow-lg shadow-agri-500/20 hover:shadow-agri-500/30"
+          >
+            View Archives
+          </Button>
         </div>
       </Container>
     </header>

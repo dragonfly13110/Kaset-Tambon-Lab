@@ -7,19 +7,20 @@ interface SectionTitleProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  className?: string;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ eyebrow, title, subtitle, align = "center" }) => (
-  <div className={`mb-8 ${align === "center" ? "text-center" : "text-left"}`}>
+const SectionTitle: React.FC<SectionTitleProps> = ({ eyebrow, title, subtitle, align = "center", className }) => (
+  <div className={`mb-10 text-center md:mb-16 ${className}`}>
     {eyebrow && (
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-inset ring-emerald-400/20">
-        <Sparkles className="h-4 w-4" aria-hidden />
-        <span>{eyebrow}</span>
+      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-agri-50 px-3 py-1 text-xs font-medium text-agri-700 ring-1 ring-inset ring-agri-600/20">
+        <Sparkles className="h-4 w-4 text-agri-500" aria-hidden />
+        <span className="uppercase tracking-wide font-display">{eyebrow}</span>
       </div>
     )}
-    <h2 className="text-2xl font-semibold leading-tight text-white md:text-4xl">{title}</h2>
+    <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-5xl font-display">{title}</h2>
     {subtitle && (
-      <p className="mt-3 text-balance text-sm leading-relaxed text-slate-300 md:text-base">{subtitle}</p>
+      <p className="mt-4 text-balance text-base leading-relaxed text-slate-600 font-sans md:text-lg">{subtitle}</p>
     )}
   </div>
 );

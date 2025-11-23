@@ -42,8 +42,8 @@ const Projects: React.FC = () => {
   const filteredProjects = PROJECTS.filter((p) => (filter === "all" ? true : p.category === filter));
 
   return (
-    <motion.section 
-      id="projects" 
+    <motion.section
+      id="projects"
       className="relative scroll-mt-24 py-14 md:py-20"
       variants={sectionVariants}
       initial="hidden"
@@ -51,29 +51,26 @@ const Projects: React.FC = () => {
       viewport={{ once: true, amount: 0.1 }}
     >
       <Container>
-        <SectionTitle
-          eyebrow="โปรเจกต์หลัก"
-          title="คลิกเพื่อไปยังระบบที่ใช้งานจริง"
-          subtitle="ลิงก์ภายนอกจะเปิดในแท็บใหม่ — รองรับทั้งมือถือและเดสก์ท็อป พัฒนาโดยเกษตรตำบล คนใช้แรงงาน"
-          align="left"
-        />
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold font-display text-slate-900 mb-4">
+            คลังเครื่องมือและนวัตกรรม
+          </h2>
+          <p className="text-slate-600 font-sans text-lg max-w-2xl mx-auto">
+            เลือกหมวดหมู่เพื่อดูคลังเอกสาร เครื่องมือ และบันทึกที่ใช้ในการทำงานจริง
+          </p>
+        </div>
 
-        <div className="mb-5 flex flex-wrap items-center gap-2" aria-label="แถบกรองโปรเจกต์">
-          <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 ring-1 ring-inset ring-white/10">
-            <Filter className="h-4 w-4 text-emerald-300" aria-hidden />
-            <span className="text-xs text-slate-300">กรองโปรเจกต์</span>
-          </div>
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-2" aria-label="แถบกรองโปรเจกต์">
           {projectFilters.map((f) => (
             <motion.button
               key={f.key}
               type="button"
               onClick={() => setFilter(f.key as Category)}
               aria-pressed={filter === f.key}
-              className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset transition ${
-                filter === f.key
-                  ? "bg-emerald-500 text-slate-900 ring-emerald-400"
-                  : "bg-white/5 text-slate-200 ring-white/10 hover:bg-white/10"
-              }`}
+              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${filter === f.key
+                ? "bg-agri-100 text-agri-700 ring-1 ring-inset ring-agri-600/20"
+                : "text-slate-600 hover:bg-slate-100"
+                }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -82,8 +79,8 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        <motion.div 
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        <motion.div
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
           variants={gridVariants}
           initial="hidden"
           animate="visible"
