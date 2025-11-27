@@ -36,7 +36,7 @@ export const PROJECTS: ReadonlyArray<Project> = [
     icon: <Calculator className="h-6 w-6" aria-hidden />,
     title: "Crop Cost Lab — เครื่องคิดต้นทุน & จำลองฉากทัศน์",
     desc: "คำนวณต้นทุนยืดหยุ่น ปรับสมมติฐานปัจจัยการผลิตแบบเรียลไทม์ เหมาะกับงานวางแผนและการให้คำปรึกษา",
-    href: "https://agrilab-cost.vercel.app/",
+    href: "https://agrilabcost-ai.vercel.app/",
     tag: "เว็บเครื่องมือ",
     category: "tool",
   },

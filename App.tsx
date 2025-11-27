@@ -10,10 +10,11 @@ import AiToolsSection from './components/AiToolsSection';
 import Footer from './components/Footer';
 import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
+import AIToolsPage from './pages/AIToolsPage';
 import InfoSection from './components/InfoSection';
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'home' | 'news'>('home');
+  const [page, setPage] = useState<'home' | 'news' | 'aitools'>('home');
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -63,7 +64,7 @@ const App: React.FC = () => {
               <Projects />
               <NewsSection onNavigateToNews={() => setPage('news')} />
               <VisionSection />
-              <AiToolsSection />
+              <AiToolsSection onNavigateToAITools={() => setPage('aitools')} />
               <WeatherSection />
               <AboutMeSection />
               <InfoSection />
@@ -92,8 +93,10 @@ const App: React.FC = () => {
               </a>
             </div>
           </>
-        ) : (
+        ) : page === 'news' ? (
           <NewsPage onNavigateHome={() => setPage('home')} />
+        ) : (
+          <AIToolsPage onNavigateHome={() => setPage('home')} />
         )}
 
         <Footer />
