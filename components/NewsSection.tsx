@@ -239,7 +239,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
   return (
     <motion.section
       id="news-section"
-      className="relative scroll-mt-24 py-14 md:py-20"
+      className="relative scroll-mt-24 py-12 md:py-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

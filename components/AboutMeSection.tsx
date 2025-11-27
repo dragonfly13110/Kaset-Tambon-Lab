@@ -141,7 +141,7 @@ const AboutMeSection: React.FC = () => {
   return (
     <motion.section
       id="about-me"
-      className="relative scroll-mt-24 py-14 md:py-20"
+      className="relative scroll-mt-24 py-12 md:py-16"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

@@ -8,7 +8,7 @@ import { ShieldCheck, ArrowRight, ChevronDown, Facebook } from './Icons';
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative overflow-hidden py-20 md:py-32">
+    <section id="hero" className="relative overflow-hidden py-16 md:py-24">
       <Container className="relative z-10">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div

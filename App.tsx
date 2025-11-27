@@ -58,7 +58,7 @@ const App: React.FC = () => {
 
         {page === 'home' ? (
           <>
-            <main className="flex-grow space-y-24 pb-24 pt-12 md:space-y-32 md:pt-20">
+            <main className="flex-grow space-y-0 pb-12 pt-12 md:space-y-0 md:pt-12">
               <Hero />
               <Projects />
               <NewsSection onNavigateToNews={() => setPage('news')} />
