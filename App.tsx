@@ -12,6 +12,7 @@ import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
 import AIToolsPage from './pages/AIToolsPage';
 import InfoSection from './components/InfoSection';
+import SEO from './components/SEO';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<'home' | 'news' | 'aitools'>('home');
@@ -59,6 +60,11 @@ const App: React.FC = () => {
 
         {page === 'home' ? (
           <>
+            <SEO
+              title="Kaset Tambon Lab - Smart Agricultural Extension Officer"
+              description="ห้องปฏิบัติการเกษตรตำบลยุคใหม่ รวมเครื่องมือ AI เทคโนโลยี และนวัตกรรมเพื่อนักส่งเสริมการเกษตร พัฒนาอาชีพเกษตรกร สู่ Smart Agriculture"
+              keywords="เกษตรตำบล, นักส่งเสริมการเกษตร, Smart Agriculture, AgTech, AI เกษตร, เทคโนโลยีการเกษตร, นวัตกรรมเกษตร, เครื่องมือเกษตร"
+            />
             <main className="flex-grow space-y-0 pb-12 pt-12 md:space-y-0 md:pt-12">
               <Hero />
               <Projects />

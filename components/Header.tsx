@@ -8,14 +8,14 @@ import { NAV_ITEMS } from '../constants';
 import type { NavItem } from '../types';
 
 interface HeaderProps {
-  page: 'home' | 'news';
-  setPage: (page: 'home' | 'news') => void;
+  page: 'home' | 'news' | 'aitools';
+  setPage: (page: 'home' | 'news' | 'aitools') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
   const handleNavClick = (item: NavItem) => {
     if (item.page) {
-      setPage(item.page as 'home' | 'news');
+      setPage(item.page as 'home' | 'news' | 'aitools');
       window.scrollTo(0, 0);
     } else if (item.href) {
       if (page !== 'home') {

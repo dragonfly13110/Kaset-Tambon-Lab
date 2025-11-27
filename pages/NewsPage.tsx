@@ -4,6 +4,7 @@ import Container from '../components/ui/Container';
 import SectionTitle from '../components/ui/SectionTitle';
 import Button from '../components/ui/Button';
 import { ArrowLeft, ArrowRight, Loader, AlertTriangle } from '../components/Icons';
+import SEO from '../components/SEO';
 
 interface RssArticle {
   title: string;
@@ -250,17 +251,12 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
 
 
   return (
-    <div className="min-h-screen bg-surface-50 text-slate-900 relative overflow-hidden">
-      {/* Clean Gradient Background - Same as Homepage */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Modern Gradient Background */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-agri-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-tech-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" style={{ animationDelay: '2s' }} />
-
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-      </div>
-
+    <div className="min-h-screen relative overflow-hidden">
+      <SEO
+        title="ข่าวสาร AgTech - Kaset Tambon Lab"
+        description="อัปเดตเทรนด์และนวัตกรรมเทคโนโลยีการเกษตรล่าสุดจากทั่วโลก ข่าวเกษตรไฮเทค Smart Farming และ Precision Agriculture"
+        keywords="ข่าวเกษตร, AgTech News, เทคโนโลยีการเกษตร, นวัตกรรมเกษตร, Smart Farming, Precision Agriculture"
+      />
       <motion.div variants={pageVariants} initial="hidden" animate="visible" className="relative min-h-screen z-10">
         <div className="relative py-8">
           <Container>

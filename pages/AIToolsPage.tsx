@@ -22,6 +22,7 @@ import {
     Component,
     Type,
 } from '../components/Icons';
+import SEO from '../components/SEO';
 
 interface AIToolsPageProps {
     onNavigateHome: () => void;
@@ -333,18 +334,14 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
     return (
-        <div className="min-h-screen bg-surface-50 text-slate-900 relative overflow-hidden">
-            {/* Clean Gradient Background - Same as Homepage */}
-            <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-                {/* Modern Gradient Background */}
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-agri-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-tech-200/30 rounded-full blur-3xl opacity-60 mix-blend-multiply filter animate-float" style={{ animationDelay: '2s' }} />
-
-                {/* Subtle Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-            </div>
-
+        <div className="min-h-screen relative overflow-hidden">
+            <SEO
+                title="เครื่องมือ AI สำหรับเกษตร - Kaset Tambon Lab"
+                description="รวมเครื่องมือ AI และแอปพลิเคชันเพื่อเกษตรกรรม วินิจฉัยโรคพืช ดาวเทียม พยากรณ์อากาศ สร้างสื่อ และอื่นๆ อีกมากมาย"
+                keywords="AI เกษตร, เครื่องมือเกษตร, PlantVillage, ดาวเทียม, NDVI, พยากรณ์อากาศ, ChatGPT เกษตร, Canva, Adobe Firefly"
+            />
             <motion.div variants={pageVariants} initial="hidden" animate="visible" className="relative min-h-screen z-10">
+
                 <div className="relative py-8">
                     <Container>
                         <div className="inline-block rounded-2xl bg-white/80 backdrop-blur-md shadow-lg border border-white/30 p-1">
