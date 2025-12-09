@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kaset-tambon-lab.netlify.app/sitemap.xml

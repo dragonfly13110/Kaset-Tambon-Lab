@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import BrandLogo from './BrandLogo';
@@ -31,47 +32,78 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/20 bg-white/80 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-white/60">
+    <motion.header
+      className="sticky top-0 z-50 glass-premium"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* Gradient Border Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-agri-400/50 to-transparent" />
+
       <Container className="flex items-center justify-between py-4">
-        <button
+        <motion.button
           onClick={() => {
             setPage('home');
             window.scrollTo(0, 0);
           }}
           className="flex items-center gap-3 group focus:outline-none"
           aria-label="กลับหน้าหลัก"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          <div className="relative p-1.5 rounded-xl bg-gradient-to-br from-agri-50 to-tech-50 shadow-inner group-hover:shadow-md transition-all duration-300">
+          <motion.div
+            className="relative p-2 rounded-xl bg-gradient-to-br from-agri-50 to-tech-50 shadow-inner group-hover:shadow-lg transition-all duration-300"
+            whileHover={{ rotate: [0, -5, 5, 0] }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Glow Effect on Hover */}
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-agri-400/20 to-tech-400/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
             <BrandLogo />
-          </div>
+          </motion.div>
           <div className="text-left">
-            <div className="text-xl font-bold font-display text-slate-800 tracking-tight group-hover:text-agri-600 transition-colors">Kaset Tambon</div>
-            <div className="text-[10px] font-sans uppercase tracking-widest text-slate-500 font-semibold group-hover:text-tech-500 transition-colors">Smart Lab</div>
+            <div className="text-xl font-bold font-display text-slate-800 tracking-tight group-hover:text-gradient-agri transition-all duration-300">
+              Kaset Tambon
+            </div>
+            <div className="text-[10px] font-sans uppercase tracking-widest text-slate-500 font-semibold group-hover:text-tech-500 transition-colors">
+              Smart Lab
+            </div>
           </div>
-        </button>
+        </motion.button>
+
         <nav className="hidden items-center gap-8 md:flex" aria-label="หลัก">
-          {NAV_ITEMS.map((item) => (
-            <button
+          {NAV_ITEMS.map((item, index) => (
+            <motion.button
               key={item.label}
               onClick={() => handleNavClick(item)}
-              className="relative text-sm font-medium text-slate-600 transition-all duration-300 hover:text-agri-600"
+              className="relative text-sm font-medium text-slate-600 transition-all duration-300 hover:text-agri-600 link-underline py-1"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.3 }}
+              whileHover={{ y: -2 }}
             >
               <span className="relative z-10">{item.label}</span>
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-agri-500 rounded-full transition-all duration-300 group-hover:w-full"></span>
-            </button>
+            </motion.button>
           ))}
         </nav>
-        <div className="hidden md:block">
+
+        <motion.div
+          className="hidden md:block"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4, duration: 0.4 }}
+        >
           <Button
             onClick={() => handleNavClick({ href: '#projects', label: 'ดูทั้งหมด' })}
             variant="primary"
-            className="font-medium shadow-lg shadow-agri-500/20 hover:shadow-agri-500/30"
+            className="font-medium shadow-lg shadow-agri-500/20 hover:shadow-agri-500/40 btn-ripple glow-agri-hover"
           >
+            <span className="mr-1">📁</span>
             View Archives
           </Button>
-        </div>
+        </motion.div>
       </Container>
-    </header>
+    </motion.header>
   );
 };
 
