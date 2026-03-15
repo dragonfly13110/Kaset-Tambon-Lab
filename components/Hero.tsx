@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
               whileHover={{ scale: 1.05 }}
             >
               <span className="mr-2">🌾</span>
-              Smart Agricultural Extension Officer
+              นักส่งเสริมการเกษตรยุคใหม่
               <span className="ml-2">🤖</span>
             </motion.span>
 
@@ -252,7 +252,7 @@ const Hero: React.FC = () => {
         transition={{ delay: 1.5, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-agri-600 transition-colors group"
       >
-        <span className="text-[10px] font-serif tracking-[0.2em] uppercase group-hover:text-agri-500 transition-colors">Scroll to Explore</span>
+        <span className="text-[10px] font-sans tracking-[0.2em] uppercase group-hover:text-agri-500 transition-colors">เลื่อนเพื่อสำรวจ</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

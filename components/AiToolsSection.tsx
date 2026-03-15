@@ -45,63 +45,63 @@ const cardVariants = {
 const toolCategories = [
   {
     title: 'วินิจฉัยโรค/แมลงด้วย AI',
-    description: 'Plantix, Agrio, AgroScout, Xarvio - ระบุโรคพืชจากภาพด้วยความแม่นยำ 90%+ พร้อมคำแนะนำการรักษาทันที',
+    description: 'Plantix (800 อาการ/60 พืช), Agrio + ดาวเทียม, AgroScout โดรน - ระบุโรค 90%+ พร้อมพยากรณ์การระบาดล่วงหน้า',
     icon: Camera,
     color: 'from-emerald-500 to-teal-500',
-    badge: '🔥 2025 Trending'
+    badge: '🔥 2026 Trending'
   },
   {
     title: 'ดาวเทียม & โดรน AI',
-    description: 'FlyPix AI, Taranis, OneSoil, Farmonaut - ติดตามสุขภาพพืชเรียลไทม์ คาดการณ์ผลผลิตแม่นยำ',
+    description: 'FlyPix AI, Taranis, OneSoil + BBLeap (Precision Spray), Farmonaut - สแกน NDVI/สุขภาพพืชเรียลไทม์ ฉีดพ่นเฉพาะจุด',
     icon: Satellite,
     color: 'from-blue-500 to-cyan-500',
     badge: '🛰️ Precision Ag'
   },
   {
     title: 'พยากรณ์อากาศ AI แม่นยำ',
-    description: 'GraphCast (Google), Pangu-Weather (Huawei) - พยากรณ์ 10 วันล่วงหน้าเฉพาะพื้นที่ ด้วย AI Model ล่าสุด',
+    description: 'GenCast (Google) 15 วัน 50 สถานการณ์, GraphCast 10 วัน, Pangu-Weather - Open Source พยากรณ์เฉพาะพื้นที่',
     icon: Wind,
     color: 'from-sky-500 to-blue-500',
     badge: '⚡ AI Weather'
   },
   {
-    title: 'Gemini 2.0 & GPT-4 Turbo',
-    description: 'Cropin Sage (Gemini), Farmer.Chat (GPT-4), AgriQuery - ถามตอบ วิเคราะห์ภาพ วางแผนเกษตรได้ 24/7',
+    title: 'GPT-5.4 & Gemini 3.1 Pro',
+    description: 'Agentic AI: GPT-5.4 (มี.ค. 2026), Gemini 3.1 Pro, Claude Sonnet 4.6 - วิเคราะห์ภาพ/วางแผนเกษตร 24/7 ด้วย Multi-step Reasoning',
     icon: Bot,
     color: 'from-violet-500 to-purple-500',
-    badge: '🤖 GenAI 2025'
+    badge: '🤖 GenAI 2026'
   },
   {
     title: 'วิเคราะห์ดินและน้ำอัจฉริยะ',
-    description: 'CropX, IBM Maximo, Gamaya - วัดสุขภาพดิน ความชื้น Carbon เพื่อ Precision Irrigation',
+    description: 'CropX, Gamaya, IoT Sensors ใหม่ - วัดสุขภาพดิน ความชื้น Carbon + VRT ลดปุ๋ย 36-60% รักษาผลผลิต',
     icon: Leaf,
     color: 'from-green-500 to-emerald-500',
     badge: '💧 Smart Soil'
   },
   {
     title: 'เครื่องจักร AI อัตโนมัติ',
-    description: 'John Deere See & Spray, FarmWise Titan - หุ่นยนต์กำจัดวัชพืช/เก็บเกี่ยวอัตโนมัติ ลดแรงงาน 70%',
+    description: 'John Deere See & Spray Ultimate, FarmWise Titan, หุ่นยนต์เก็บเกี่ยว - Autonomous Farming ครบวงจร ลดแรงงาน 70%+',
     icon: Component,
     color: 'from-orange-500 to-red-500',
     badge: '🤖 Autonomous'
   },
   {
-    title: 'Digital Twin ฟาร์มจำลอง',
-    description: 'ทดสอบสถานการณ์ต่างๆ บนแบบจำลองดิจิทัล ก่อนลงมือทำจริง - เทรนด์ใหม่ปี 2025',
+    title: 'Digital Twin + Agentic AI',
+    description: 'AI Agent จัดการฟาร์มอัตโนมัติแบบ end-to-end: วิเคราะห์ข้อมูล วางแผน และสั่งการ ไม่ต้องป้อนคำสั่งทีละขั้น',
     icon: BarChart3,
     color: 'from-indigo-500 to-purple-500',
-    badge: '🆕 New 2025'
+    badge: '🆕 Agentic 2026'
   },
   {
     title: 'สร้างสื่อ/อินโฟกราฟิก AI',
-    description: 'Canva AI, Adobe Firefly, Gamma, Ideogram - สร้างสื่อเกษตรสวยงามได้ในไม่กี่นาที',
+    description: 'Nano Banana 2 (Gemini 3.1 Flash Image), Adobe Firefly 3, Canva AI - สร้างสื่อเกษตรสวยงามได้ในไม่กี่วินาที',
     icon: Paintbrush,
     color: 'from-pink-500 to-rose-500',
-    badge: '🎨 Design AI'
+    badge: '🎨 Nano Banana 2'
   },
   {
     title: 'AgriLLM & AI เฉพาะทาง',
-    description: 'Large Language Model เฉพาะการเกษตร ให้คำแนะนำตามสภาพพื้นที่และภูมิอากาศเฉพาะ',
+    description: 'LLM เกษตรเฉพาะทาง + Generative AI เป็นที่ปรึกษาเกษตรอัจฉริยะ วิเคราะห์สภาพพื้นที่ เปรียบเทียบสถานการณ์',
     icon: Brain,
     color: 'from-teal-500 to-cyan-500',
     badge: '🧠 AgriAI'
@@ -120,9 +120,9 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
     >
       <Container>
         <SectionTitle
-          eyebrow="อัพเดทใหม่ ธ.ค. 2024 → 2025"
+          eyebrow="อัพเดทใหม่ มี.ค. 2026"
           title="คลังเครื่องมือ AI เพื่อเกษตรตำบล"
-          subtitle="รวมเทคโนโลยี AI ล่าสุดที่กำลังเปลี่ยนโฉมการเกษตรทั่วโลก - ตลาดโต 26% ต่อปี"
+          subtitle="รวมเทคโนโลยี AI ล่าสุดที่กำลังเปลี่ยนโฉมการเกษตรทั่วโลก - ยุค Agentic AI & GPT-5.4"
         />
 
         {/* Highlight Banner */}
@@ -133,12 +133,12 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
           viewport={{ once: true }}
         >
           <p className="text-sm text-slate-700">
-            🚀 <span className="font-semibold text-agri-700">เทรนด์ 2025:</span>{' '}
-            <span className="text-tech-600 font-medium">Gemini 2.0</span>,{' '}
-            <span className="text-tech-600 font-medium">GPT-4 Turbo</span>,{' '}
-            <span className="text-tech-600 font-medium">Digital Twin</span>,{' '}
-            <span className="text-tech-600 font-medium">Autonomous Farming</span>,{' '}
-            <span className="text-tech-600 font-medium">AgriLLM</span>
+            🚀 <span className="font-semibold text-agri-700">เทรนด์ มี.ค. 2026:</span>{' '}
+            <span className="text-tech-600 font-medium">GPT-5.4</span>,{' '}
+            <span className="text-tech-600 font-medium">Gemini 3.1 Pro</span>,{' '}
+            <span className="text-tech-600 font-medium">Claude Sonnet 4.6</span>,{' '}
+            <span className="text-tech-600 font-medium">Nano Banana 2</span>,{' '}
+            <span className="text-tech-600 font-medium">Agentic AI</span>
           </p>
         </motion.div>
 
@@ -155,12 +155,12 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
             <div className="text-xs text-slate-500">ตลาด AI เกษตร 2034</div>
           </div>
           <div className="px-4 py-2 rounded-xl bg-white/80 border border-surface-200 shadow-sm">
-            <div className="text-2xl font-bold text-tech-600">26.3%</div>
-            <div className="text-xs text-slate-500">CAGR 2025-2034</div>
+            <div className="text-2xl font-bold text-tech-600">70%+</div>
+            <div className="text-xs text-slate-500">ฟาร์มใช้ AI พยากรณ์ 2026</div>
           </div>
           <div className="px-4 py-2 rounded-xl bg-white/80 border border-surface-200 shadow-sm">
-            <div className="text-2xl font-bold text-purple-600">20-30%</div>
-            <div className="text-xs text-slate-500">เพิ่มผลผลิต</div>
+            <div className="text-2xl font-bold text-purple-600">36-60%</div>
+            <div className="text-xs text-slate-500">ลดปุ๋ยด้วย VRT/AI</div>
           </div>
         </motion.div>
 
@@ -232,7 +232,7 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
           transition={{ delay: 0.5 }}
         >
           <p className="text-sm text-slate-500">
-            💡 อัพเดทล่าสุด: ธันวาคม 2024 | รวมลิงก์และคู่มือการใช้งานภาษาไทย | เทรนด์สู่ปี 2025
+            💡 อัพเดทล่าสุด: มีนาคม 2026 | GPT-5.4, Gemini 3.1 Pro, GenCast, Nano Banana 2 | ยุค Agentic AI เกษตร
           </p>
         </motion.div>
       </Container>

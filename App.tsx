@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
 import AIToolsPage from './pages/AIToolsPage';
-import InfoSection from './components/InfoSection';
+
 import SEO from './components/SEO';
 
 // Floating Particles Component
@@ -203,18 +203,17 @@ const App: React.FC = () => {
             <main className="flex-grow space-y-0 pb-12 pt-12 md:space-y-0 md:pt-12">
               <Hero />
               <WaveDivider color="#ffffff" />
-              <Projects />
-              <WaveDivider flip color="#f8fafc" />
-              <NewsSection onNavigateToNews={() => setPage('news')} />
-              <WaveDivider color="#ffffff" />
-              <VisionSection />
-              <WaveDivider flip color="#f8fafc" />
-              <AiToolsSection onNavigateToAITools={() => setPage('aitools')} />
-              <WaveDivider color="#ffffff" />
               <WeatherSection />
               <WaveDivider flip color="#f8fafc" />
+              <Projects />
+              <WaveDivider color="#ffffff" />
+              <NewsSection onNavigateToNews={() => setPage('news')} />
+              <WaveDivider flip color="#f8fafc" />
+              <VisionSection />
+              <WaveDivider color="#ffffff" />
+              <AiToolsSection onNavigateToAITools={() => setPage('aitools')} />
+              <WaveDivider flip color="#f8fafc" />
               <AboutMeSection />
-              <InfoSection />
             </main>
             <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">
               <motion.a

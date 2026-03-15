@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
               Kaset Tambon Lab
             </h3>
             <p className="text-sm text-slate-400">
-              Smart Agricultural Innovation Platform
+              แพลตฟอร์มนวัตกรรมเกษตรอัจฉริยะ
             </p>
           </motion.div>
 
@@ -111,11 +111,11 @@ const Footer: React.FC = () => {
             <p className="flex items-center gap-1">
               © {new Date().getFullYear()}
               <span className="text-gradient-agri font-medium">Kaset Tambon Lab</span>
-              • Department of Agricultural Extension
+              • กรมส่งเสริมการเกษตร
             </p>
             <p className="text-slate-400 flex items-center gap-1">
               <span>✨</span>
-              Designed for Smart Agriculture
+              ออกแบบเพื่อเกษตรอัจฉริยะ
               <span>🌾</span>
             </p>
           </motion.div>

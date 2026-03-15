@@ -167,5 +167,6 @@ export const SKILLS: ReadonlyArray<Skill> = [
 export const NAV_ITEMS: ReadonlyArray<NavItem> = [
   { href: "#projects", label: "โปรเจกต์" },
   { page: "news", label: "ข่าวสาร AgTech" },
+  { page: "aitools", label: "เครื่องมือ AI" },
   { href: "#about-me", label: "เกี่ยวกับฉัน" },
 ];

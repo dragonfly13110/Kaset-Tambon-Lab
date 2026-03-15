@@ -1,12 +1,20 @@
-
-
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import BrandLogo from './BrandLogo';
 import { NAV_ITEMS } from '../constants';
 import type { NavItem } from '../types';
+import { X } from './Icons';
+
+// Hamburger Menu Icon
+const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <line x1="4" x2="20" y1="12" y2="12" />
+    <line x1="4" x2="20" y1="6" y2="6" />
+    <line x1="4" x2="20" y1="18" y2="18" />
+  </svg>
+);
 
 interface HeaderProps {
   page: 'home' | 'news' | 'aitools';
@@ -14,14 +22,16 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const handleNavClick = (item: NavItem) => {
+    setIsMobileMenuOpen(false);
     if (item.page) {
       setPage(item.page as 'home' | 'news' | 'aitools');
       window.scrollTo(0, 0);
     } else if (item.href) {
       if (page !== 'home') {
         setPage('home');
-        // Use a short delay to allow the home page to render before scrolling
         setTimeout(() => {
           document.querySelector(item.href!)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -45,6 +55,7 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
         <motion.button
           onClick={() => {
             setPage('home');
+            setIsMobileMenuOpen(false);
             window.scrollTo(0, 0);
           }}
           className="flex items-center gap-3 group focus:outline-none"
@@ -66,11 +77,12 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
               Kaset Tambon
             </div>
             <div className="text-[10px] font-sans uppercase tracking-widest text-slate-500 font-semibold group-hover:text-tech-500 transition-colors">
-              Smart Lab
+              ห้องปฏิบัติการอัจฉริยะ
             </div>
           </div>
         </motion.button>
 
+        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex" aria-label="หลัก">
           {NAV_ITEMS.map((item, index) => (
             <motion.button
@@ -87,6 +99,7 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
           ))}
         </nav>
 
+        {/* Desktop CTA Button */}
         <motion.div
           className="hidden md:block"
           initial={{ opacity: 0, x: 20 }}
@@ -99,10 +112,64 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
             className="font-medium shadow-lg shadow-agri-500/20 hover:shadow-agri-500/40 btn-ripple glow-agri-hover"
           >
             <span className="mr-1">📁</span>
-            View Archives
+            ดูผลงาน
           </Button>
         </motion.div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden rounded-lg p-2 text-slate-600 hover:bg-surface-100 hover:text-agri-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-agri-500"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'ปิดเมนู' : 'เปิดเมนู'}
+          aria-expanded={isMobileMenuOpen}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <MenuIcon className="h-6 w-6" />
+          )}
+        </button>
       </Container>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="md:hidden border-t border-surface-200 bg-white/95 backdrop-blur-md"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Container className="py-4">
+              <nav className="flex flex-col gap-1" aria-label="เมนูมือถือ">
+                {NAV_ITEMS.map((item, index) => (
+                  <motion.button
+                    key={item.label}
+                    onClick={() => handleNavClick(item)}
+                    className="w-full text-left rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-agri-50 hover:text-agri-700 transition-all duration-200"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * index, duration: 0.3 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+                <div className="mt-2 pt-2 border-t border-surface-200">
+                  <Button
+                    onClick={() => handleNavClick({ href: '#projects', label: 'ดูทั้งหมด' })}
+                    variant="primary"
+                    className="w-full font-medium shadow-lg shadow-agri-500/20 btn-ripple"
+                  >
+                    <span className="mr-1">📁</span>
+                    ดูผลงาน
+                  </Button>
+                </div>
+              </nav>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
