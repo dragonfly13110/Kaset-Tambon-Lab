@@ -7,10 +7,13 @@ import Projects from './components/Projects';
 import NewsSection from './components/NewsSection';
 import VisionSection from './components/VisionSection';
 import AiToolsSection from './components/AiToolsSection';
+import AgriCalendarSection from './components/AgriCalendarSection';
+import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
 import AIToolsPage from './pages/AIToolsPage';
+import FAQPage from './pages/FAQPage';
 
 import SEO from './components/SEO';
 
@@ -83,7 +86,7 @@ const WaveDivider: React.FC<{ flip?: boolean; color?: string }> = ({ flip = fals
 );
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'home' | 'news' | 'aitools'>('home');
+  const [page, setPage] = useState<'home' | 'news' | 'aitools' | 'faq'>('home');
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -213,6 +216,10 @@ const App: React.FC = () => {
               <WaveDivider color="#ffffff" />
               <AiToolsSection onNavigateToAITools={() => setPage('aitools')} />
               <WaveDivider flip color="#f8fafc" />
+              <AgriCalendarSection />
+              <WaveDivider color="#ffffff" />
+              <FAQSection onNavigateToFAQ={() => setPage('faq')} />
+              <WaveDivider flip color="#f8fafc" />
               <AboutMeSection />
             </main>
             <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">
@@ -247,6 +254,8 @@ const App: React.FC = () => {
           </>
         ) : page === 'news' ? (
           <NewsPage onNavigateHome={() => setPage('home')} />
+        ) : page === 'faq' ? (
+          <FAQPage onNavigateHome={() => setPage('home')} />
         ) : (
           <AIToolsPage onNavigateHome={() => setPage('home')} />
         )}

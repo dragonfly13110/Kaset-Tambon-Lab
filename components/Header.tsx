@@ -17,8 +17,8 @@ const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 interface HeaderProps {
-  page: 'home' | 'news' | 'aitools';
-  setPage: (page: 'home' | 'news' | 'aitools') => void;
+  page: 'home' | 'news' | 'aitools' | 'faq';
+  setPage: (page: 'home' | 'news' | 'aitools' | 'faq') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ page, setPage }) => {
   const handleNavClick = (item: NavItem) => {
     setIsMobileMenuOpen(false);
     if (item.page) {
-      setPage(item.page as 'home' | 'news' | 'aitools');
+      setPage(item.page as 'home' | 'news' | 'aitools' | 'faq');
       window.scrollTo(0, 0);
     } else if (item.href) {
       if (page !== 'home') {

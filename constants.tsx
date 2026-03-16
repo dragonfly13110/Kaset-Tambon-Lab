@@ -168,5 +168,6 @@ export const NAV_ITEMS: ReadonlyArray<NavItem> = [
   { href: "#projects", label: "โปรเจกต์" },
   { page: "news", label: "ข่าวสาร AgTech" },
   { page: "aitools", label: "เครื่องมือ AI" },
+  { page: "faq", label: "FAQ เกษตร" },
   { href: "#about-me", label: "เกี่ยวกับฉัน" },
 ];
