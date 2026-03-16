@@ -27,7 +27,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ onNavigateToFAQ }) => {
   return (
     <motion.section
       id="faq"
-      className="relative py-16 md:py-20"
+      className="relative py-10 md:py-12"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -41,11 +41,11 @@ const FAQSection: React.FC<FAQSectionProps> = ({ onNavigateToFAQ }) => {
         />
 
         {/* Preview Questions */}
-        <div className="mx-auto max-w-3xl space-y-3 mb-8">
+        <div className="mx-auto max-w-3xl space-y-2 mb-6">
           {TOP_QUESTIONS.map((q, index) => (
             <motion.div
               key={q.question}
-              className="flex items-center gap-4 p-4 rounded-2xl border border-surface-200 bg-white/80 hover:border-agri-200 hover:shadow-sm transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-3 p-3 rounded-2xl border border-surface-200 bg-white/80 hover:border-agri-200 hover:shadow-sm transition-all duration-200 cursor-pointer"
               onClick={onNavigateToFAQ}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

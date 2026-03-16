@@ -8,7 +8,6 @@ import NewsSection from './components/NewsSection';
 import VisionSection from './components/VisionSection';
 import AiToolsSection from './components/AiToolsSection';
 import AgriCalendarSection from './components/AgriCalendarSection';
-import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import AboutMeSection from './components/AboutMeSection';
 import NewsPage from './pages/NewsPage';
@@ -203,7 +202,7 @@ const App: React.FC = () => {
               description="ห้องปฏิบัติการเกษตรตำบลยุคใหม่ รวมเครื่องมือ AI เทคโนโลยี และนวัตกรรมเพื่อนักส่งเสริมการเกษตร พัฒนาอาชีพเกษตรกร สู่ Smart Agriculture"
               keywords="เกษตรตำบล, นักส่งเสริมการเกษตร, Smart Agriculture, AgTech, AI เกษตร, เทคโนโลยีการเกษตร, นวัตกรรมเกษตร, เครื่องมือเกษตร"
             />
-            <main className="flex-grow space-y-0 pb-12 pt-12 md:space-y-0 md:pt-12">
+            <main className="flex-grow space-y-0 pb-6 pt-6 md:space-y-0 md:pt-6">
               <Hero />
               <WaveDivider color="#ffffff" />
               <WeatherSection />
@@ -218,8 +217,6 @@ const App: React.FC = () => {
               <WaveDivider flip color="#f8fafc" />
               <AgriCalendarSection />
               <WaveDivider color="#ffffff" />
-              <FAQSection onNavigateToFAQ={() => setPage('faq')} />
-              <WaveDivider flip color="#f8fafc" />
               <AboutMeSection />
             </main>
             <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">

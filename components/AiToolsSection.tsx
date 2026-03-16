@@ -112,7 +112,7 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
   return (
     <motion.section
       id="ai-tools"
-      className="relative py-16 md:py-20"
+      className="relative py-10 md:py-12"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -127,7 +127,7 @@ const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) 
 
         {/* Highlight Banner */}
         <motion.div
-          className="mt-8 p-4 rounded-2xl bg-gradient-to-r from-agri-500/10 via-tech-500/10 to-purple-500/10 border border-agri-200/50 text-center"
+          className="mt-6 p-3 rounded-2xl bg-gradient-to-r from-agri-500/10 via-tech-500/10 to-purple-500/10 border border-agri-200/50 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

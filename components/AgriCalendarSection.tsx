@@ -76,7 +76,7 @@ const AgriCalendarSection: React.FC = () => {
   return (
     <motion.section
       id="agri-calendar"
-      className="relative py-16 md:py-20"
+      className="relative py-10 md:py-12"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -90,11 +90,11 @@ const AgriCalendarSection: React.FC = () => {
         />
 
         {/* View Mode Toggle */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-5">
           <div className="inline-flex rounded-xl bg-surface-100 p-1 ring-1 ring-surface-200">
             <button
               onClick={() => setViewMode('calendar')}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 viewMode === 'calendar'
                   ? 'bg-white text-agri-700 shadow-sm ring-1 ring-surface-200'
                   : 'text-slate-500 hover:text-slate-700'
@@ -104,7 +104,7 @@ const AgriCalendarSection: React.FC = () => {
             </button>
             <button
               onClick={() => setViewMode('crops')}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 viewMode === 'crops'
                   ? 'bg-white text-agri-700 shadow-sm ring-1 ring-surface-200'
                   : 'text-slate-500 hover:text-slate-700'
@@ -125,12 +125,12 @@ const AgriCalendarSection: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Month Selector */}
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-2 mb-8">
+              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-1.5 mb-5">
                 {MONTHS.map((m, idx) => (
                   <motion.button
                     key={m.month}
                     onClick={() => setSelectedMonth(idx)}
-                    className={`relative flex flex-col items-center gap-1 rounded-xl px-2 py-3 text-xs font-medium transition-all duration-200 border ${
+                    className={`relative flex flex-col items-center gap-1 rounded-xl px-1.5 py-2 text-xs font-medium transition-all duration-200 border ${
                       selectedMonth === idx
                         ? 'bg-white text-agri-700 shadow-lg border-agri-300 ring-2 ring-agri-200'
                         : 'bg-white/50 text-slate-500 hover:bg-white hover:shadow-sm border-surface-200 hover:border-agri-200'
@@ -156,7 +156,7 @@ const AgriCalendarSection: React.FC = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="relative overflow-hidden rounded-3xl border border-surface-200 bg-white p-6 md:p-8 shadow-soft"
+                  className="relative overflow-hidden rounded-3xl border border-surface-200 bg-white p-5 md:p-6 shadow-soft"
                 >
                   {/* Background Gradient */}
                   <div
@@ -170,20 +170,20 @@ const AgriCalendarSection: React.FC = () => {
                     }}
                   />
 
-                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
                     {/* Month Header */}
                     <div className="flex-shrink-0 text-center md:text-left md:w-48">
-                      <div className="text-5xl mb-2">{currentMonthData.emoji}</div>
-                      <h3 className="text-2xl font-bold font-display text-slate-800">{currentMonthData.month}</h3>
-                      <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-semibold ring-1 ring-inset ${seasonColors[currentMonthData.season]}`}>
+                      <div className="text-4xl mb-1">{currentMonthData.emoji}</div>
+                      <h3 className="text-xl font-bold font-display text-slate-800">{currentMonthData.month}</h3>
+                      <span className={`inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-semibold ring-1 ring-inset ${seasonColors[currentMonthData.season]}`}>
                         {seasonLabels[currentMonthData.season]}
                       </span>
                     </div>
 
                     {/* Activities */}
                     <div className="flex-1">
-                      <h4 className="text-sm font-bold font-display text-slate-700 mb-4 uppercase tracking-wide">กิจกรรมเกษตรหลัก</h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <h4 className="text-xs font-bold font-display text-slate-700 mb-2 uppercase tracking-wide">กิจกรรมเกษตรหลัก</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {currentMonthData.activities.map((activity, idx) => (
                           <motion.div
                             key={activity}
@@ -203,10 +203,10 @@ const AgriCalendarSection: React.FC = () => {
               </AnimatePresence>
 
               {/* Season Legend */}
-              <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-orange-400" /> ฤดูร้อน (ก.พ.-พ.ค.)</span>
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-blue-400" /> ฤดูฝน (พ.ค.-ต.ค.)</span>
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-violet-400" /> ฤดูหนาว (พ.ย.-ม.ค.)</span>
+              <div className="mt-4 flex flex-wrap justify-center gap-3 text-[11px] text-slate-500">
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-orange-400" /> ฤดูร้อน (ก.พ.-พ.ค.)</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-blue-400" /> ฤดูฝน (พ.ค.-ต.ค.)</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-violet-400" /> ฤดูหนาว (พ.ย.-ม.ค.)</span>
               </div>
             </motion.div>
           ) : (
@@ -218,11 +218,11 @@ const AgriCalendarSection: React.FC = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Crops Info Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {CROPS.map((crop, index) => (
                   <motion.div
                     key={crop.name}
-                    className="group relative overflow-hidden rounded-2xl border border-surface-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-agri-200 hover:shadow-xl hover:-translate-y-1"
+                    className="group relative overflow-hidden rounded-2xl border border-surface-200 bg-white p-4 shadow-sm transition-all duration-300 hover:border-agri-200 hover:shadow-xl hover:-translate-y-1"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -230,11 +230,11 @@ const AgriCalendarSection: React.FC = () => {
                     whileHover={{ scale: 1.02 }}
                   >
                     {/* Icon Header */}
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${crop.color} flex items-center justify-center text-2xl shadow-lg`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${crop.color} flex items-center justify-center text-xl shadow-lg`}>
                         {crop.emoji}
                       </div>
-                      <h3 className="text-lg font-bold font-display text-slate-800 group-hover:text-agri-600 transition-colors">{crop.name}</h3>
+                      <h3 className="text-base font-bold font-display text-slate-800 group-hover:text-agri-600 transition-colors">{crop.name}</h3>
                     </div>
 
                     {/* Details */}
@@ -250,8 +250,8 @@ const AgriCalendarSection: React.FC = () => {
                     </div>
 
                     {/* Note Badge */}
-                    <div className="mt-4 px-3 py-2 rounded-lg bg-agri-50/50 border border-agri-100/50">
-                      <p className="text-xs text-agri-700 font-medium">💡 {crop.note}</p>
+                    <div className="mt-3 px-2 py-1.5 rounded-lg bg-agri-50/50 border border-agri-100/50">
+                      <p className="text-[11px] text-agri-700 font-medium">💡 {crop.note}</p>
                     </div>
 
                     {/* Hover Glow */}
@@ -267,7 +267,7 @@ const AgriCalendarSection: React.FC = () => {
 
         {/* Source Note */}
         <motion.div
-          className="mt-6 text-center"
+          className="mt-4 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
