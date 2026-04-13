@@ -9,13 +9,13 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: {
     opacity: 0,
     scale: 0.9,
-    transition: { duration: 0.3 }
-  }
+    transition: { duration: 0.3 },
+  },
 };
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
@@ -46,11 +46,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   }
 
   return (
-    <motion.div
-      variants={cardVariants}
-      layout
-      className="perspective-1000"
-    >
+    <motion.div variants={cardVariants} layout className="perspective-1000">
       <motion.a
         aria-label={`${title} — เปิดลิงก์ภายนอก`}
         onMouseMove={handleMove}
@@ -61,7 +57,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           rotateY,
         }}
         whileHover={shouldReduceMotion ? {} : { y: -8, scale: 1.02 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { type: "spring" as const, stiffness: 300, damping: 20 }}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { type: 'spring' as const, stiffness: 300, damping: 20 }
+        }
         href={href}
         target="_blank"
         rel="noopener noreferrer"

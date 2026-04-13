@@ -8,8 +8,8 @@ const footerVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-  }
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
 const socialLinks = [
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute -bottom-10 -left-10 w-48 h-48 bg-gradient-to-br from-tech-200/20 to-purple-200/20 rounded-full blur-3xl"
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.4, 0.2],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
       </div>
 
@@ -63,9 +63,7 @@ const Footer: React.FC = () => {
             <h3 className="text-2xl font-bold font-display text-gradient-premium mb-2">
               Kaset Tambon Lab
             </h3>
-            <p className="text-sm text-slate-400">
-              แพลตฟอร์มนวัตกรรมเกษตรอัจฉริยะ
-            </p>
+            <p className="text-sm text-slate-400">แพลตฟอร์มนวัตกรรมเกษตรอัจฉริยะ</p>
           </motion.div>
 
           {/* Social Links */}
@@ -110,8 +108,8 @@ const Footer: React.FC = () => {
           >
             <p className="flex items-center gap-1">
               © {new Date().getFullYear()}
-              <span className="text-gradient-agri font-medium">Kaset Tambon Lab</span>
-              • กรมส่งเสริมการเกษตร
+              <span className="text-gradient-agri font-medium">Kaset Tambon Lab</span>•
+              กรมส่งเสริมการเกษตร
             </p>
             <p className="text-slate-400 flex items-center gap-1">
               <span>✨</span>

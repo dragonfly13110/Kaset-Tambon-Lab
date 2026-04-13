@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import { ChevronDown } from './Icons';
@@ -8,7 +8,7 @@ import { ChevronDown } from './Icons';
 const AnimatedCounter: React.FC<{ end: number; duration?: number; suffix?: string }> = ({
   end,
   duration = 2,
-  suffix = ''
+  suffix = '',
 }) => {
   const [count, setCount] = useState(0);
 
@@ -31,7 +31,12 @@ const AnimatedCounter: React.FC<{ end: number; duration?: number; suffix?: strin
     return () => cancelAnimationFrame(animationFrame);
   }, [end, duration]);
 
-  return <span className="stat-number">{count.toLocaleString()}{suffix}</span>;
+  return (
+    <span className="stat-number">
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
 };
 
 // Typing Animation Component
@@ -78,11 +83,7 @@ const stats = [
   { label: 'เกษตรกร', value: 1000, suffix: '+' },
 ];
 
-const typingTexts = [
-  'ด้วยเทคโนโลยีสมัยใหม่',
-  'ด้วย AI และ Data',
-  'ด้วยนวัตกรรมดิจิทัล',
-];
+const typingTexts = ['ด้วยเทคโนโลยีสมัยใหม่', 'ด้วย AI และ Data', 'ด้วยนวัตกรรมดิจิทัล'];
 
 const Hero: React.FC = () => {
   return (
@@ -97,7 +98,7 @@ const Hero: React.FC = () => {
             x: [0, 15, 0],
             scale: [1, 1.2, 1],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute top-40 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-tech-300/30 to-tech-400/20 blur-xl"
@@ -106,7 +107,7 @@ const Hero: React.FC = () => {
             x: [0, -20, 0],
             scale: [1, 1.1, 1],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
         <motion.div
           className="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-purple-300/20 to-pink-300/20 blur-xl"
@@ -114,19 +115,19 @@ const Hero: React.FC = () => {
             y: [0, -25, 0],
             rotate: [0, 180, 360],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
         />
 
         {/* Geometric Shapes */}
         <motion.div
           className="absolute top-1/3 right-1/3 w-4 h-4 bg-agri-400/40 rotate-45"
           animate={{ rotate: [45, 225, 45], scale: [1, 1.5, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-tech-400/40 rounded-full"
           animate={{ y: [0, -50, 0], opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
@@ -198,7 +199,11 @@ const Hero: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                 >
                   <div className="text-3xl md:text-4xl font-bold text-gradient-agri font-display">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2 + index * 0.3} />
+                    <AnimatedCounter
+                      end={stat.value}
+                      suffix={stat.suffix}
+                      duration={2 + index * 0.3}
+                    />
                   </div>
                   <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
                 </motion.div>
@@ -241,7 +246,7 @@ const Hero: React.FC = () => {
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       {/* Scroll Indicator */}
@@ -252,10 +257,12 @@ const Hero: React.FC = () => {
         transition={{ delay: 1.5, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-agri-600 transition-colors group"
       >
-        <span className="text-[10px] font-sans tracking-[0.2em] uppercase group-hover:text-agri-500 transition-colors">เลื่อนเพื่อสำรวจ</span>
+        <span className="text-[10px] font-sans tracking-[0.2em] uppercase group-hover:text-agri-500 transition-colors">
+          เลื่อนเพื่อสำรวจ
+        </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           <ChevronDown className="h-5 w-5" />
         </motion.div>

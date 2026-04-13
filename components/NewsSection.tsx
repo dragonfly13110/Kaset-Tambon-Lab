@@ -25,8 +25,8 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const }
-  }
+    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const },
+  },
 };
 
 const gridVariants = {
@@ -42,8 +42,8 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: 'easeOut' as const }
-  }
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
 };
 
 const stripHtml = (html: string) => {
@@ -52,7 +52,7 @@ const stripHtml = (html: string) => {
   tempDiv.innerHTML = html;
   const text = tempDiv.textContent || tempDiv.innerText || '';
   return text.replace(/<[^>]*>?/gm, '');
-}
+};
 
 const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
   const [articles, setArticles] = useState<RssArticle[]>([]);
@@ -72,7 +72,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
       setError(null);
 
       try {
-        const fetchPromises = RSS_FEEDS.map(feed =>
+        const fetchPromises = RSS_FEEDS.map((feed) =>
           fetch(`${PROXY_URL}${feed.url}`).then(async (response) => {
             if (!response.ok) {
               throw new Error(`HTTP error for ${feed.name}: ${response.status}`);
@@ -84,22 +84,23 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
 
         const results = await Promise.allSettled(fetchPromises);
 
-        let allArticles: RssArticle[] = [];
+        const allArticles: RssArticle[] = [];
         const parser = new DOMParser();
 
-        results.forEach(result => {
+        results.forEach((result) => {
           if (result.status === 'fulfilled') {
             const { text, sourceName } = result.value;
-            const xmlDoc = parser.parseFromString(text, "text/xml");
+            const xmlDoc = parser.parseFromString(text, 'text/xml');
 
-            if (xmlDoc.getElementsByTagName("parsererror").length) {
+            if (xmlDoc.getElementsByTagName('parsererror').length) {
               console.error(`XML Parse Error for feed: ${sourceName}`);
               return;
             }
 
-            const items = Array.from(xmlDoc.querySelectorAll("item"));
-            const parsedArticles: RssArticle[] = items.map(item => {
-              const getElementText = (tagName: string): string => item.querySelector(tagName)?.textContent ?? '';
+            const items = Array.from(xmlDoc.querySelectorAll('item'));
+            const parsedArticles: RssArticle[] = items.map((item) => {
+              const getElementText = (tagName: string): string =>
+                item.querySelector(tagName)?.textContent ?? '';
 
               const descriptionHTML = getElementText('description');
               const imageUrlMatch = descriptionHTML.match(/<img[^>]+src="([^">]+)"/);
@@ -124,14 +125,16 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
                 link: getElementText('link'),
                 guid: getElementText('guid'),
                 description: descriptionHTML,
-                categories: Array.from(item.querySelectorAll('category')).map(cat => cat.textContent ?? ''),
+                categories: Array.from(item.querySelectorAll('category')).map(
+                  (cat) => cat.textContent ?? ''
+                ),
                 imageUrl,
                 source: sourceName,
               };
             });
             allArticles.push(...parsedArticles);
           } else {
-            console.error("A feed failed to load:", result.reason);
+            console.error('A feed failed to load:', result.reason);
           }
         });
 
@@ -144,10 +147,9 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
           .slice(0, 6);
 
         setArticles(sortedArticles);
-
       } catch (err) {
         setError(err instanceof Error ? err.message : 'เกิดข้อผิดพลาดในการดึงข้อมูลข่าวสาร');
-        console.error("News fetch/parse error:", err);
+        console.error('News fetch/parse error:', err);
       } finally {
         setLoading(false);
       }
@@ -163,7 +165,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
         month: 'short',
         day: 'numeric',
       });
-    } catch (e) {
+    } catch {
       return dateString;
     }
   };
@@ -210,7 +212,11 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
             >
               {article.imageUrl && (
                 <div className="aspect-[16/9] w-full overflow-hidden bg-surface-100 relative">
-                  <img src={article.imageUrl} alt="" className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <img
+                    src={article.imageUrl}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
               )}
               <div className="flex flex-1 flex-col justify-between p-6">
@@ -221,8 +227,12 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
                     </span>
                     <span className="text-slate-400">{formatDate(article.pubDate)}</span>
                   </div>
-                  <h3 className="text-lg font-bold font-display text-slate-800 line-clamp-3 group-hover:text-agri-600 transition-colors">{article.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500 font-sans line-clamp-4">{stripHtml(article.description)}</p>
+                  <h3 className="text-lg font-bold font-display text-slate-800 line-clamp-3 group-hover:text-agri-600 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500 font-sans line-clamp-4">
+                    {stripHtml(article.description)}
+                  </p>
                 </div>
                 <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-agri-600 transition-colors group-hover:text-agri-700">
                   <span>อ่านต้นฉบับ</span>
@@ -234,7 +244,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
         ))}
       </motion.div>
     );
-  }
+  };
 
   return (
     <motion.section

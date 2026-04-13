@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import App from '../App';
 
 // Mock all child components to simplify testing
@@ -25,7 +25,9 @@ vi.mock('../components/Projects', () => ({
 
 vi.mock('../components/NewsSection', () => ({
   default: ({ onNavigateToNews }: { onNavigateToNews: () => void }) => (
-    <div data-testid="mock-news" onClick={onNavigateToNews}>News</div>
+    <div data-testid="mock-news" onClick={onNavigateToNews}>
+      News
+    </div>
   ),
 }));
 
@@ -51,26 +53,32 @@ vi.mock('../components/SEO', () => ({
 
 vi.mock('../pages/NewsPage', () => ({
   default: ({ onNavigateHome }: { onNavigateHome: () => void }) => (
-    <div data-testid="mock-newspage" onClick={onNavigateHome}>News Page</div>
+    <div data-testid="mock-newspage" onClick={onNavigateHome}>
+      News Page
+    </div>
   ),
 }));
 
 vi.mock('../pages/AIToolsPage', () => ({
   default: ({ onNavigateHome }: { onNavigateHome: () => void }) => (
-    <div data-testid="mock-aitoolspage" onClick={onNavigateHome}>AI Tools Page</div>
+    <div data-testid="mock-aitoolspage" onClick={onNavigateHome}>
+      AI Tools Page
+    </div>
   ),
 }));
 
 vi.mock('../pages/FAQPage', () => ({
   default: ({ onNavigateHome }: { onNavigateHome: () => void }) => (
-    <div data-testid="mock-faqpage" onClick={onNavigateHome}>FAQ Page</div>
+    <div data-testid="mock-faqpage" onClick={onNavigateHome}>
+      FAQ Page
+    </div>
   ),
 }));
 
 describe('App Component', () => {
   it('should render app without crashing', () => {
     render(<App />);
-    
+
     expect(screen.getByTestId('mock-header')).toBeInTheDocument();
     expect(screen.getByTestId('mock-hero')).toBeInTheDocument();
     expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
@@ -78,7 +86,7 @@ describe('App Component', () => {
 
   it('should show home page by default', () => {
     render(<App />);
-    
+
     expect(screen.getByTestId('mock-hero')).toBeInTheDocument();
     expect(screen.getByTestId('mock-projects')).toBeInTheDocument();
     expect(screen.getByTestId('mock-news')).toBeInTheDocument();
@@ -86,7 +94,7 @@ describe('App Component', () => {
 
   it('should navigate to news page when page is set to news', () => {
     render(<App />);
-    
+
     // App should render without errors
     expect(screen.getByRole('main') || screen.getByTestId('mock-hero')).toBeInTheDocument();
   });

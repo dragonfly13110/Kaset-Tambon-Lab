@@ -12,8 +12,8 @@ const sectionVariants = {
     opacity: 1,
     y: 0,
     // FIX: Add `as const` to help TypeScript infer a tuple type for the cubic-bezier easing array.
-    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const }
-  }
+    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const },
+  },
 };
 
 // Removed Variants type annotation to fix build error.
@@ -41,26 +41,26 @@ const WeatherSection: React.FC = () => {
     const loadingTimeout = setTimeout(() => {
       if (status === 'loading') {
         setWeatherData(MOCK_WEATHER_DATA);
-        setError("ไม่สามารถเข้าถึงตำแหน่งได้ในเวลาที่กำหนด กำลังแสดงข้อมูลเริ่มต้น");
+        setError('ไม่สามารถเข้าถึงตำแหน่งได้ในเวลาที่กำหนด กำลังแสดงข้อมูลเริ่มต้น');
         setStatus('error');
       }
     }, 12000);
 
-    if ("geolocation" in navigator) {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        () => {
           clearTimeout(loadingTimeout);
           setWeatherData({
             ...MOCK_WEATHER_DATA,
-            location: "ตำแหน่งปัจจุบันของคุณ",
+            location: 'ตำแหน่งปัจจุบันของคุณ',
           });
           setStatus('success');
         },
         (geoError) => {
           clearTimeout(loadingTimeout);
-          console.error("Geolocation error:", geoError.message);
+          console.error('Geolocation error:', geoError.message);
           setWeatherData(MOCK_WEATHER_DATA);
-          setError("ไม่สามารถเข้าถึงตำแหน่งได้ กำลังแสดงข้อมูลเริ่มต้น");
+          setError('ไม่สามารถเข้าถึงตำแหน่งได้ กำลังแสดงข้อมูลเริ่มต้น');
           setStatus('error');
         },
         { timeout: 10000 }
@@ -68,7 +68,7 @@ const WeatherSection: React.FC = () => {
     } else {
       clearTimeout(loadingTimeout);
       setWeatherData(MOCK_WEATHER_DATA);
-      setError("เบราว์เซอร์ไม่รองรับการระบุตำแหน่ง");
+      setError('เบราว์เซอร์ไม่รองรับการระบุตำแหน่ง');
       setStatus('error');
     }
 
@@ -78,7 +78,9 @@ const WeatherSection: React.FC = () => {
   const renderLoading = () => (
     <div className="flex flex-col items-center justify-center py-12 text-center">
       <Loader className="h-8 w-8 text-agri-500" />
-      <p className="mt-4 text-lg font-medium text-slate-600 font-display">กำลังโหลดข้อมูลสภาพอากาศ...</p>
+      <p className="mt-4 text-lg font-medium text-slate-600 font-display">
+        กำลังโหลดข้อมูลสภาพอากาศ...
+      </p>
     </div>
   );
 
@@ -87,16 +89,13 @@ const WeatherSection: React.FC = () => {
 
     const { location, current, forecast } = weatherData;
     const CurrentWeatherIcon = WEATHER_ICONS[current.condition];
-    const googleWeatherUrl = location === "ตำแหน่งปัจจุบันของคุณ"
-      ? `https://www.google.com/search?q=weather`
-      : `https://www.google.com/search?q=weather+${encodeURIComponent(MOCK_WEATHER_DATA.location)}`;
+    const googleWeatherUrl =
+      location === 'ตำแหน่งปัจจุบันของคุณ'
+        ? `https://www.google.com/search?q=weather`
+        : `https://www.google.com/search?q=weather+${encodeURIComponent(MOCK_WEATHER_DATA.location)}`;
 
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
           {/* Current Weather */}
           <div className="flex flex-col justify-between md:col-span-5">
@@ -106,10 +105,17 @@ const WeatherSection: React.FC = () => {
                 <span>{location}</span>
               </div>
               <div className="mt-4 flex items-center gap-4">
-                <CurrentWeatherIcon className="h-20 w-20 text-tech-500" aria-label={current.conditionText} />
+                <CurrentWeatherIcon
+                  className="h-20 w-20 text-tech-500"
+                  aria-label={current.conditionText}
+                />
                 <div>
-                  <div className="text-6xl font-bold font-display text-slate-800">{current.temp}°<span className="text-3xl font-medium text-slate-400">C</span></div>
-                  <div className="font-semibold text-agri-600 font-sans">{current.conditionText}</div>
+                  <div className="text-6xl font-bold font-display text-slate-800">
+                    {current.temp}°<span className="text-3xl font-medium text-slate-400">C</span>
+                  </div>
+                  <div className="font-semibold text-agri-600 font-sans">
+                    {current.conditionText}
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,7 +145,9 @@ const WeatherSection: React.FC = () => {
           {/* Forecast */}
           <div className="flex flex-col justify-between md:col-span-6">
             <div>
-              <h3 className="text-sm font-bold font-display text-slate-700 mb-4">พยากรณ์อากาศ 5 วัน</h3>
+              <h3 className="text-sm font-bold font-display text-slate-700 mb-4">
+                พยากรณ์อากาศ 5 วัน
+              </h3>
               <motion.div
                 className="mt-4 grid grid-cols-3 gap-3 text-center sm:grid-cols-5"
                 variants={forecastListVariants}
@@ -155,8 +163,13 @@ const WeatherSection: React.FC = () => {
                       className="flex flex-col items-center rounded-xl bg-surface-50 p-3 ring-1 ring-surface-200"
                       variants={forecastItemVariants}
                     >
-                      <div className="text-sm font-semibold text-slate-600 font-display">{day.day}</div>
-                      <ForecastIcon className="my-2 h-8 w-8 text-tech-500" aria-label={day.condition} />
+                      <div className="text-sm font-semibold text-slate-600 font-display">
+                        {day.day}
+                      </div>
+                      <ForecastIcon
+                        className="my-2 h-8 w-8 text-tech-500"
+                        aria-label={day.condition}
+                      />
                       <div className="text-sm font-sans">
                         <span className="font-semibold text-slate-700">{day.temp.high}°</span>
                         <span className="text-slate-400">/{day.temp.low}°</span>
@@ -167,11 +180,7 @@ const WeatherSection: React.FC = () => {
               </motion.div>
             </div>
             <div className="mt-6 text-center">
-              <Button
-                href={googleWeatherUrl}
-                variant="soft"
-                className="text-xs font-medium"
-              >
+              <Button href={googleWeatherUrl} variant="soft" className="text-xs font-medium">
                 <span>ดูพยากรณ์อากาศฉบับเต็ม</span>
                 <ExternalLink className="h-4 w-4" />
               </Button>
@@ -208,22 +217,18 @@ const WeatherSection: React.FC = () => {
           <div
             className="pointer-events-none absolute -inset-px -z-10 rounded-3xl opacity-30 blur-xl"
             style={{
-              background: "radial-gradient(350px circle at 10% 10%, rgba(16,185,129,.15), transparent 40%), radial-gradient(350px circle at 90% 90%, rgba(56,189,248,.1), transparent 40%)",
+              background:
+                'radial-gradient(350px circle at 10% 10%, rgba(16,185,129,.15), transparent 40%), radial-gradient(350px circle at 90% 90%, rgba(56,189,248,.1), transparent 40%)',
             }}
             aria-hidden
           />
           <AnimatePresence mode="wait">
             {status === 'loading' ? (
-              <motion.div
-                key="loader"
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              >
+              <motion.div key="loader" exit={{ opacity: 0, transition: { duration: 0.2 } }}>
                 {renderLoading()}
               </motion.div>
             ) : (
-              <motion.div key="content">
-                {renderWeather()}
-              </motion.div>
+              <motion.div key="content">{renderWeather()}</motion.div>
             )}
           </AnimatePresence>
         </div>

@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-// FIX: Import Variants type from framer-motion to correctly type animation variants.
-// I am removing `type Variants` because the error indicates it's not exported.
 import { motion, AnimatePresence } from 'framer-motion';
 import Container from './ui/Container';
-import SectionTitle from './ui/SectionTitle';
 import ProjectCard from './ProjectCard';
 import { PROJECTS } from '../constants';
 import type { Category } from '../types';
-import { Filter } from './Icons';
 
 const projectFilters = [
-  { key: "all", label: "ทั้งหมด" },
-  { key: "tool", label: "เครื่องมือ" },
-  { key: "knowledge", label: "องค์ความรู้" },
-  { key: "dashboard", label: "แดชบอร์ด" },
+  { key: 'all', label: 'ทั้งหมด' },
+  { key: 'tool', label: 'เครื่องมือ' },
+  { key: 'knowledge', label: 'องค์ความรู้' },
+  { key: 'dashboard', label: 'แดชบอร์ด' },
 ];
 
 // Removed Variants type annotation to fix build error.
@@ -23,8 +19,8 @@ const sectionVariants = {
     opacity: 1,
     y: 0,
     // FIX: Add `as const` to help TypeScript infer a tuple type for the cubic-bezier easing array.
-    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const }
-  }
+    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const },
+  },
 };
 
 // FIX: Explicitly type gridVariants with Variants to ensure type correctness.
@@ -38,8 +34,10 @@ const gridVariants = {
 };
 
 const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<Category>("all");
-  const filteredProjects = PROJECTS.filter((p) => (filter === "all" ? true : p.category === filter));
+  const [filter, setFilter] = useState<Category>('all');
+  const filteredProjects = PROJECTS.filter((p) =>
+    filter === 'all' ? true : p.category === filter
+  );
 
   return (
     <motion.section
@@ -60,17 +58,21 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-2" aria-label="แถบกรองโปรเจกต์">
+        <div
+          className="mb-10 flex flex-wrap items-center justify-center gap-2"
+          aria-label="แถบกรองโปรเจกต์"
+        >
           {projectFilters.map((f) => (
             <motion.button
               key={f.key}
               type="button"
               onClick={() => setFilter(f.key as Category)}
               aria-pressed={filter === f.key}
-              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${filter === f.key
-                ? "bg-agri-100 text-agri-700 ring-1 ring-inset ring-agri-600/20"
-                : "text-slate-600 hover:bg-slate-100"
-                }`}
+              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                filter === f.key
+                  ? 'bg-agri-100 text-agri-700 ring-1 ring-inset ring-agri-600/20'
+                  : 'text-slate-600 hover:bg-slate-100'
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

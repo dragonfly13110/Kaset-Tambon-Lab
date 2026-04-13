@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import WeatherSection from './components/WeatherSection';
@@ -18,16 +18,23 @@ import SEO from './components/SEO';
 
 // Floating Particles Component
 const FloatingParticles: React.FC = () => {
-  const particles = useMemo(() =>
-    Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      duration: Math.random() * 15 + 10,
-      delay: Math.random() * 5,
-    })), []
-  );
+  const particles = useMemo(() => {
+    const generateParticles = () => {
+      const result = [];
+      for (let i = 0; i < 20; i++) {
+        result.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 4 + 2,
+          duration: Math.random() * 15 + 10,
+          delay: Math.random() * 5,
+        });
+      }
+      return result;
+    };
+    return generateParticles();
+  }, []);
 
   return (
     <div className="particles-container">
@@ -43,7 +50,7 @@ const FloatingParticles: React.FC = () => {
           }}
           animate={{
             y: [0, -100, 0],
-            x: [0, Math.random() * 50 - 25, 0],
+            x: [0, 25, 0],
             opacity: [0, 0.8, 0],
             scale: [0.5, 1, 0.5],
           }}
@@ -51,7 +58,7 @@ const FloatingParticles: React.FC = () => {
             duration: p.duration,
             repeat: Infinity,
             delay: p.delay,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -60,24 +67,27 @@ const FloatingParticles: React.FC = () => {
 };
 
 // Wave Divider Component
-const WaveDivider: React.FC<{ flip?: boolean; color?: string }> = ({ flip = false, color = "#f8fafc" }) => (
+const WaveDivider: React.FC<{ flip?: boolean; color?: string }> = ({
+  flip = false,
+  color = '#f8fafc',
+}) => (
   <div className={`wave-divider ${flip ? 'rotate-180' : ''}`}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
       <motion.path
         d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"
         fill={color}
-        initial={{ d: "M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z" }}
+        initial={{ d: 'M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z' }}
         animate={{
           d: [
-            "M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z",
-            "M0,80 C300,30 600,100 900,40 C1050,70 1150,50 1200,80 L1200,120 L0,120 Z",
-            "M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z",
+            'M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z',
+            'M0,80 C300,30 600,100 900,40 C1050,70 1150,50 1200,80 L1200,120 L0,120 Z',
+            'M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z',
           ],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
     </svg>
@@ -123,7 +133,6 @@ const App: React.FC = () => {
     }
   }, [page]);
 
-
   return (
     <div className="min-h-screen bg-surface-50 text-slate-900 relative overflow-hidden font-sans selection:bg-agri-500/30 selection:text-agri-900">
       {/* Cursor Glow Effect */}
@@ -151,7 +160,7 @@ const App: React.FC = () => {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
         <motion.div
@@ -164,7 +173,7 @@ const App: React.FC = () => {
           transition={{
             duration: 12,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 1,
           }}
         />
@@ -180,7 +189,7 @@ const App: React.FC = () => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 2,
           }}
         />
@@ -219,7 +228,10 @@ const App: React.FC = () => {
               <WaveDivider color="#ffffff" />
               <AboutMeSection />
             </main>
-            <div className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex" aria-label="เมนูลัด">
+            <div
+              className="fixed bottom-5 right-5 z-[60] hidden flex-col gap-2 md:flex"
+              aria-label="เมนูลัด"
+            >
               <motion.a
                 href="#projects"
                 className="rounded-2xl bg-white/80 px-3 py-2 text-xs font-bold text-slate-700 shadow-lg backdrop-blur hover:bg-white hover:text-agri-600 transition-all duration-200 border border-white/20 glow-agri-hover"
