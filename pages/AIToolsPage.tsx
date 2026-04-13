@@ -530,8 +530,6 @@ const aiToolCategories: ReadonlyArray<AiToolCategory> = [
         name: 'Gamma',
         description: 'สร้างสไลด์/เพจจากพรอมป์ตเร็วๆ แล้วส่งต่อไป PowerPoint/Google Slides',
         links: [{ label: 'Gamma', href: 'https://gamma.app/', icon: LinkIcon }],
-        links: [{ label: 'Gamma', href: 'https://gamma.app/', icon: LinkIcon },
-        ],
       },
     ],
   },
