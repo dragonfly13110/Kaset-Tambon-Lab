@@ -6,24 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --report-unused-disable-directives",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,css,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,css,json,md}\"",
-    "prepare": "husky",
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{css,json,md}": [
-      "prettier --write"
-    ]
+    "preview": "vite preview"
   },
   "dependencies": {
     "@google/genai": "^1.20.0",
@@ -41,34 +24,16 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.14.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.58.1",
-    "@typescript-eslint/parser": "^8.58.1",
     "@vitejs/plugin-react": "^4.3.0",
-    "@vitest/coverage-v8": "^4.1.4",
     "autoprefixer": "^10.4.22",
-    "eslint": "^9.39.4",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.5.0",
-    "husky": "^9.1.7",
-    "jsdom": "^29.0.2",
-    "lint-staged": "^16.4.0",
     "postcss": "^8.5.6",
-    "prettier": "^3.8.2",
+    "prettier": "^3.5.3",
     "tailwindcss": "^4.1.17",
     "typescript": "~5.8.2",
-    "typescript-eslint": "^8.58.1",
-    "vite": "^6.2.0",
-    "vitest": "^4.1.4"
+    "vite": "^6.2.0"
   }
 }
