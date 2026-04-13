@@ -530,6 +530,8 @@ const aiToolCategories: ReadonlyArray<AiToolCategory> = [
         name: 'Gamma',
         description: 'สร้างสไลด์/เพจจากพรอมป์ตเร็วๆ แล้วส่งต่อไป PowerPoint/Google Slides',
         links: [{ label: 'Gamma', href: 'https://gamma.app/', icon: LinkIcon }],
+        links: [{ label: 'Gamma', href: 'https://gamma.app/', icon: LinkIcon },
+        ],
       },
     ],
   },
@@ -612,7 +614,7 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
       >
         <div className="relative py-8">
           <Container>
-            <div className="inline-block rounded-2xl bg-white/80 backdrop-blur-md shadow-lg border border-white/30 p-1">
+            <div className="inline-block rounded-2xl bg-slate-900/80 backdrop-blur-md shadow-lg border border-white/10 p-1">
               <Button onClick={onNavigateHome} variant="soft">
                 <ArrowLeft className="h-4 w-4" />
                 <span>กลับหน้าหลัก</span>
@@ -623,12 +625,11 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
 
         <main className="relative pb-20">
           <Container>
-            <div className="rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border border-white/40 p-8 mb-10">
+            <div className="rounded-3xl bg-slate-900/50 backdrop-blur-xl shadow-2xl border border-white/5 p-8 mb-10">
               <SectionTitle
-                eyebrow="อัพเดทใหม่ เมษายน 2026"
-                title="คลังเครื่องมือ AI เพื่อเกษตรตำบล"
-                subtitle="รวมเทคโนโลยี AI ล่าสุดที่กำลังเปลี่ยนโฉมการเกษตรทั่วโลก - ยุค Agentic AI, Agriculture 4.0 Thailand"
-                align="left"
+                eyebrow="เมษายน 2026"
+                title="เครื่องมือ AI เพื่อเกษตร"
+                subtitle="เทคโนโลยี AI ล่าสุดที่เปลี่ยนโฉมการเกษตร"
               />
             </div>
 
@@ -638,7 +639,7 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
                 return (
                   <motion.div
                     key={category.title}
-                    className="overflow-hidden rounded-3xl border border-white/20 bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_16px_48px_rgba(16,185,129,0.2)] hover:border-emerald-400/30"
+                    className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_16px_48px_rgba(16,185,129,0.15)] hover:border-emerald-400/20"
                     variants={categoryVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -647,7 +648,7 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
                     <motion.div
                       initial={false}
                       onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="flex w-full cursor-pointer items-center justify-between p-5 md:p-6 text-left hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-teal-50/50 transition-all duration-300"
+                      className="flex w-full cursor-pointer items-center justify-between p-5 md:p-6 text-left hover:bg-slate-800/50 transition-all duration-300"
                       role="button"
                       aria-expanded={isExpanded}
                       aria-controls={`ai-tools-content-${index}`}
@@ -657,10 +658,10 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
                           <category.icon className="h-6 w-6 md:h-7 md:w-7" />
                         </div>
                         <div>
-                          <h3 className="text-lg md:text-xl font-bold text-slate-800">
+                          <h3 className="text-lg md:text-xl font-bold text-slate-100">
                             {category.title}
                           </h3>
-                          <p className="text-xs md:text-sm text-slate-500 mt-1">
+                          <p className="text-xs md:text-sm text-slate-400 mt-1">
                             {category.description}
                           </p>
                         </div>
@@ -689,20 +690,20 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
                           transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 md:px-6 pb-6 pt-0 bg-gradient-to-br from-slate-50/50 to-emerald-50/30">
-                            <div className="mb-5 h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
+                          <div className="px-5 md:px-6 pb-6 pt-0 bg-slate-950/30">
+                            <div className="mb-5 h-px bg-white/5"></div>
 
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                               {category.tools.map((tool) => (
                                 <div
                                   key={tool.name}
-                                  className="flex h-full flex-col justify-between rounded-2xl bg-white/90 backdrop-blur-sm p-5 ring-1 ring-slate-200/50 shadow-sm hover:shadow-lg hover:ring-emerald-200 transition-all duration-300 hover:-translate-y-1"
+                                  className="flex h-full flex-col justify-between rounded-2xl bg-slate-800/40 p-5 ring-1 ring-white/5 shadow-sm hover:shadow-lg hover:ring-emerald-400/30 transition-all duration-300 hover:-translate-y-1"
                                 >
                                   <div>
-                                    <h4 className="font-bold text-slate-900 text-base">
+                                    <h4 className="font-bold text-slate-200 text-base">
                                       {tool.name}
                                     </h4>
-                                    <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                                    <p className="mt-2 text-xs leading-relaxed text-slate-400">
                                       {tool.description}
                                     </p>
                                   </div>
@@ -745,7 +746,7 @@ const AIToolsPage: React.FC<AIToolsPageProps> = ({ onNavigateHome }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-12 rounded-3xl bg-gradient-to-br from-amber-50/90 to-orange-50/90 backdrop-blur-xl border border-amber-200/40 shadow-xl p-6"
+              className="mt-12 rounded-3xl bg-amber-950/20 backdrop-blur-xl border border-amber-900/30 shadow-xl p-6"
             >
               <div className="flex gap-4">
                 <div className="text-amber-600 flex-shrink-0">

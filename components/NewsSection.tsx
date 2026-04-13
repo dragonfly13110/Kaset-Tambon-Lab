@@ -249,7 +249,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
   return (
     <motion.section
       id="news-section"
-      className="relative scroll-mt-24 py-12 md:py-16"
+      className="relative scroll-mt-24 py-8 md:py-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -260,8 +260,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ onNavigateToNews }) => {
           <SectionTitle
             eyebrow="ข่าวสารและประกาศ"
             title="นวัตกรรมการเกษตรล่าสุด"
-            subtitle="ข่าวสารเทคโนโลยีการเกษตร (AgTech) ที่น่าสนใจจากสำนักข่าวชั้นนำทั่วโลก"
-            align="left"
+            subtitle="ข่าวสารเทคโนโลยีการเกษตร (AgTech) ที่น่าสนใจ"
           />
           <div className="flex-shrink-0">
             <Button onClick={onNavigateToNews} variant="soft">

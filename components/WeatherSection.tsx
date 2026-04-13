@@ -205,7 +205,7 @@ const WeatherSection: React.FC = () => {
   return (
     <motion.section
       id="weather"
-      className="relative scroll-mt-20 py-12 md:py-16"
+      className="relative scroll-mt-20 py-8 md:py-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

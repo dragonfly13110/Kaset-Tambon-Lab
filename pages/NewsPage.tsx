@@ -291,9 +291,8 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
             <div className="rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border border-white/40 p-8 mb-10">
               <SectionTitle
                 eyebrow="คลังข่าวสาร"
-                title="เทคโนโลยีการเกษตร (AgTech)"
-                subtitle="อัปเดตเทรนด์และนวัตกรรมการเกษตรล่าสุดจากทั่วโลก"
-                align="left"
+                title="เทคโนโลยีการเกษตร"
+                subtitle="อัปเดตเทรนด์และนวัตกรรมการเกษตรล่าสุด"
               />
             </div>
             <div className="mt-10">{renderContent()}</div>

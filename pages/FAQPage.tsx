@@ -208,9 +208,8 @@ const FAQPage: React.FC<FAQPageProps> = ({ onNavigateHome }) => {
             <div className="rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border border-white/40 p-8 mb-10">
               <SectionTitle
                 eyebrow="คำถามที่พบบ่อย"
-                title="FAQ สำหรับเกษตรกร"
-                subtitle="รวมคำตอบจากคำถามที่เกษตรกรถามบ่อยที่สุด เรื่องทะเบียนเกษตรกร เงินช่วยเหลือ และสิทธิประโยชน์ต่างๆ"
-                align="left"
+                title="FAQ เกษตร"
+                subtitle="รวมคำตอบจากคำถามที่เกษตรกรถามบ่อยที่สุด"
               />
             </div>
 
