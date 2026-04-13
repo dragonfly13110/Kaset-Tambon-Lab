@@ -1,0 +1,23 @@
+import '@testing-library/jest-dom';
+
+// Mock IntersectionObserver for Framer Motion
+class MockIntersectionObserver {
+  observe = vi.fn();
+  disconnect = vi.fn();
+  unobserve = vi.fn();
+}
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
+
+Object.defineProperty(global, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
+
+// Mock scrollTo
+window.scrollTo = vi.fn();

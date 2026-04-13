@@ -1,0 +1,39 @@
+name: "✨ Feature Request"
+description: "แนะนำฟีเจอร์ใหม่"
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        มีไอเดียใหม่ๆ บอกมาได้เลย!
+  - type: textarea
+    id: problem
+    attributes:
+      label: "ปัญหาที่ต้องการแก้"
+      description: "ฟีเจอร์นี้จะแก้ปัญหาอะไร?"
+      placeholder: "ตอนนี้มีปัญหา... อยากได้..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: "วิธีแก้ที่ต้องการ"
+      description: "อยากได้แบบไหน?"
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "ทางเลือกอื่น"
+      description: "เคยพิจารณาวิธีอื่นไหม?"
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "ความสำคัญ"
+      options:
+        - "🔴 สูง - จำเป็นมาก"
+        - "🟡 กลาง - ดีมีก็ดี"
+        - "🟢 ต่ำ - Nice to have"
+    validations:
+      required: true
