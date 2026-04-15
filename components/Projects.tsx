@@ -22,26 +22,26 @@ const Projects: React.FC = () => {
   return (
     <motion.section
       id="projects"
-      className="relative scroll-mt-16 py-6 md:py-8"
+      className="relative scroll-mt-16 py-8 md:py-10"
       initial={{ opacity: 1 }}
     >
       <Container>
         {/* Section Header */}
-        <div className="mb-4 text-center">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 md:text-2xl">ผลงาน</h2>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">เครื่องมือและแพลตฟอร์มที่พัฒนาขึ้นสำหรับเกษตรตำบล</p>
+        <div className="mb-5 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl">ผลงาน</h2>
+          <p className="mt-2 text-sm text-slate-400 md:text-base">เครื่องมือและแพลตฟอร์มที่พัฒนาขึ้นสำหรับเกษตรตำบล</p>
         </div>
 
         {/* Filters */}
-        <div className="mb-4 flex items-center justify-center gap-1.5 overflow-x-auto pb-1">
+        <div className="mb-5 flex items-center justify-center gap-1.5 overflow-x-auto pb-1">
           {projectFilters.map((f) => (
             <button
               key={f.key}
               onClick={() => setActiveCategory(f.key as Category)}
               className={`flex-shrink-0 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 activeCategory === f.key
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-900/30'
+                  : 'border border-slate-700 bg-slate-900 text-slate-300 hover:border-emerald-500/60 hover:text-emerald-300'
               }`}
             >
               {f.label}

@@ -53,30 +53,30 @@ const Header: React.FC<HeaderProps> = ({ page, setPage, dark, onToggleDark }) =>
   };
 
   return (
-    <header className={`sticky top-0 z-50 backdrop-blur-md border-b transition-colors ${dark ? 'bg-slate-950/80 border-slate-800' : 'bg-white/80 border-slate-200/50'}`}>
-      <Container className="flex items-center justify-between h-14">
+    <header className={`sticky top-0 z-50 border-b backdrop-blur-xl transition-colors ${dark ? 'border-slate-800/80 bg-slate-950/75' : 'border-slate-200/50 bg-white/80'}`}>
+      <Container className="flex h-16 items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => { setPage('home'); window.scrollTo(0, 0); }}
-          className="flex items-center gap-2.5 focus:outline-none"
+          className="group flex items-center gap-3 rounded-xl p-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/80"
           aria-label="กลับหน้าหลัก"
         >
-          <div className={`p-1.5 rounded-lg transition-colors ${dark ? 'bg-slate-800' : 'bg-emerald-50'}`}>
+          <div className={`rounded-xl border p-1.5 transition-all ${dark ? 'border-slate-700 bg-slate-900 group-hover:border-emerald-500/60' : 'border-emerald-100 bg-emerald-50'}`}>
             <BrandLogo />
           </div>
           <div className="hidden sm:block">
-            <div className={`text-sm font-semibold transition-colors ${dark ? 'text-slate-200' : 'text-slate-800'}`}>Kaset Tambon</div>
-            <div className={`text-[9px] uppercase tracking-wider transition-colors ${dark ? 'text-slate-500' : 'text-slate-500'}`}>Lab</div>
+            <div className={`text-sm font-semibold tracking-tight transition-colors ${dark ? 'text-slate-100' : 'text-slate-800'}`}>Kaset Tambon</div>
+            <div className={`text-[10px] uppercase tracking-[0.18em] transition-colors ${dark ? 'text-slate-500' : 'text-slate-500'}`}>Lab</div>
           </div>
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="หลัก">
+        <nav className="hidden items-center gap-1 rounded-xl border border-slate-800/80 bg-slate-900/70 p-1 md:flex" aria-label="หลัก">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.label}
               onClick={() => handleNavClick(item)}
-              className={`text-sm transition-colors ${dark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-emerald-600'}`}
+              className={`rounded-lg px-3 py-1.5 text-sm transition-all ${dark ? 'text-slate-300 hover:bg-slate-800 hover:text-emerald-300' : 'text-slate-600 hover:bg-slate-100 hover:text-emerald-600'}`}
             >
               {item.label}
             </button>
@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ page, setPage, dark, onToggleDark }) =>
         {/* Right side: Mobile Menu */}
         <div className="flex items-center gap-2">
           <button
-            className={`md:hidden p-1.5 rounded-md transition-colors ${dark ? 'text-slate-400 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-100'}`}
+            className={`rounded-lg border p-2 transition-colors md:hidden ${dark ? 'border-slate-700 text-slate-300 hover:border-emerald-500/60 hover:bg-slate-900' : 'border-slate-200 text-slate-600 hover:bg-slate-100'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'ปิดเมนู' : 'เปิดเมนู'}
           >
@@ -103,18 +103,18 @@ const Header: React.FC<HeaderProps> = ({ page, setPage, dark, onToggleDark }) =>
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className={`md:hidden border-t transition-colors ${dark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200'}`}
+            className={`border-t transition-colors md:hidden ${dark ? 'border-slate-800 bg-slate-950/95' : 'border-slate-200 bg-white'}`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <nav className="flex flex-col py-2">
+            <nav className="flex flex-col px-4 py-3">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item)}
-                  className={`text-left px-4 py-2.5 text-sm transition-colors ${dark ? 'text-slate-400 hover:bg-slate-800 hover:text-emerald-400' : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-600'}`}
+                  className={`rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${dark ? 'text-slate-300 hover:bg-slate-900 hover:text-emerald-300' : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-600'}`}
                 >
                   {item.label}
                 </button>

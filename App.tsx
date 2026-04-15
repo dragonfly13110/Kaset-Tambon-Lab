@@ -34,8 +34,9 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen relative overflow-hidden font-sans selection:bg-emerald-200/40 selection:text-emerald-900 dark bg-slate-950">
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[25%] h-[25%] rounded-full blur-3xl bg-emerald-900/20" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[25%] h-[25%] rounded-full blur-3xl bg-sky-900/20" />
+        <div className="absolute top-[-10%] left-[-10%] h-[28%] w-[28%] rounded-full bg-emerald-900/25 blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] h-[28%] w-[28%] rounded-full bg-sky-900/25 blur-3xl" />
+        <div className="absolute left-[35%] top-[15%] h-[24%] w-[24%] rounded-full bg-cyan-900/10 blur-3xl" />
       </div>
 
       <div className="relative z-10 flex min-h-screen flex-col">

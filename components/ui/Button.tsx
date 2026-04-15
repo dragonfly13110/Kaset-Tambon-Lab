@@ -15,10 +15,10 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   className = '',
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center gap-1.5 rounded-md font-medium transition-colors text-sm';
+  const baseClasses = 'inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
   const variantClasses = variant === 'primary'
-    ? 'bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 px-4 py-2'
-    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2';
+    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-900/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-900/40 active:translate-y-0'
+    : 'border border-slate-700/80 bg-slate-900/80 text-slate-200 backdrop-blur-sm hover:border-emerald-500/60 hover:text-emerald-300 hover:bg-slate-900';
 
   const classes = `${baseClasses} ${variantClasses} ${className}`;
 

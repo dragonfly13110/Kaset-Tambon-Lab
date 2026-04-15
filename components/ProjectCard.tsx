@@ -19,30 +19,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex h-full flex-col justify-between rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 transition-colors hover:border-emerald-300 dark:hover:border-emerald-700 hover:bg-emerald-50/30 dark:hover:bg-emerald-900/10"
+      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-950/30"
       aria-label={title}
     >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ background: 'radial-gradient(700px circle at 0% 0%, rgba(16,185,129,.12), transparent 45%)' }}
+      />
       <div>
-        <div className="flex items-start gap-3 mb-2">
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+        <div className="mb-2 flex items-start gap-3">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border border-slate-700 bg-slate-800 text-slate-300 transition-colors group-hover:border-emerald-500/50 group-hover:bg-emerald-900/30 group-hover:text-emerald-300">
             <div className="h-5 w-5">{icon}</div>
           </div>
-          <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-sm font-semibold leading-snug text-slate-100 transition-colors group-hover:text-emerald-300">
             {title}
           </h3>
         </div>
-        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3">
+        <p className="line-clamp-3 text-xs leading-relaxed text-slate-400">
           {desc}
         </p>
       </div>
 
-      <div className="mt-3 flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
+      <div className="mt-4 flex items-center justify-between border-t border-slate-800 pt-3">
         {tag && (
-          <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-600 dark:text-slate-400">
+          <span className="inline-flex items-center rounded-full border border-slate-700 bg-slate-800 px-2.5 py-1 text-[10px] font-medium text-slate-300">
             {tag}
           </span>
         )}
-        <span className="ml-auto flex items-center gap-1 text-xs text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+        <span className="ml-auto flex items-center gap-1 text-xs text-slate-400 transition-colors group-hover:text-emerald-300">
           เปิด
           <ExternalLink className="h-3 w-3" />
         </span>
