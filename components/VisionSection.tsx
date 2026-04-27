@@ -44,7 +44,7 @@ const VisionSection: React.FC = () => {
   return (
     <motion.section
       id="vision"
-      className="relative py-12 md:py-16"
+      className="relative py-8 md:py-10"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -64,7 +64,7 @@ const VisionSection: React.FC = () => {
             <p className="leading-relaxed">
               เครื่องมือทุกชิ้นถูกออกแบบโดยคำนึงถึงความเร็วและความสะดวกในการเข้าถึง ไม่ว่าจะผ่านคอมพิวเตอร์หรือโทรศัพท์มือถือ เพื่อให้คุณสามารถทำงานได้อย่างราบรื่นทุกที่ทุกเวลา เราต้องการสร้างประสบการณ์ที่ดีที่สุด ลดความซับซ้อนที่ไม่จำเป็น และทำให้เทคโนโลยีเป็นผู้ช่วยที่แท้จริงของคุณ
             </p>
-            <p className="font-display font-medium text-agri-600 border-l-4 border-agri-400 pl-4 bg-agri-50/50 py-2 rounded-r-lg">
+            <p className="font-display font-medium text-emerald-400 border-l-4 border-emerald-500/50 pl-4 bg-slate-900/50 py-3 rounded-r-xl shadow-inner">
               นี่คือโปรเจกต์ที่พัฒนาอย่างต่อเนื่อง โดยรับฟังเสียงจากผู้ใช้งานจริงเพื่อปรับปรุงและสร้างสรรค์สิ่งใหม่ๆ ที่สร้างผลกระทบเชิงบวกให้กับการเกษตรไทย
             </p>
           </motion.div>

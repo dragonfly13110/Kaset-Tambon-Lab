@@ -1,0 +1,53 @@
+name: "🐛 Bug Report"
+description: "รายงานบั๊กที่พบ"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่รายงานบั๊ก! กรุณากรอกข้อมูลด้านล่าง
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: "เกิดอะไรขึ้น?"
+      description: "อธิบายปัญหาที่พบ"
+      placeholder: "ควรเกิด... แต่จริงๆ แล้วเกิด..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "ขั้นตอนเกิดบั๊ก"
+      description: "ทำยังไงถึงเจอบั๊กนี้"
+      placeholder: |
+        1. ไปที่หน้า ...
+        2. คลิก ...
+        3. กรอก ...
+        4. เห็นปัญหา ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "ผลที่คาดหวัง"
+      description: "ควรเกิดอะไรขึ้น?"
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: "เบราว์เซอร์"
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - อื่นๆ
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshot"
+      description: "ใส่ screenshot หรือ video จะช่วยได้มาก"

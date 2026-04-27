@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Container from '../components/ui/Container';
 import SectionTitle from '../components/ui/SectionTitle';
 import Button from '../components/ui/Button';
@@ -26,8 +26,8 @@ const pageVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' as const }
-  }
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
 };
 
 const gridVariants = {
@@ -43,8 +43,8 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: 'easeOut' as const }
-  }
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
 };
 
 const stripHtml = (html: string) => {
@@ -62,7 +62,7 @@ const formatDate = (dateString: string) => {
       month: 'short',
       day: 'numeric',
     });
-  } catch (e) {
+  } catch {
     return dateString;
   }
 };
@@ -87,7 +87,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
       setError(null);
 
       try {
-        const fetchPromises = RSS_FEEDS.map(feed =>
+        const fetchPromises = RSS_FEEDS.map((feed) =>
           fetch(`${PROXY_URL}${feed.url}`).then(async (response) => {
             if (!response.ok) {
               throw new Error(`HTTP error for ${feed.name}: ${response.status}`);
@@ -99,22 +99,23 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
 
         const results = await Promise.allSettled(fetchPromises);
 
-        let allArticles: RssArticle[] = [];
+        const allArticles: RssArticle[] = [];
         const parser = new DOMParser();
 
-        results.forEach(result => {
+        results.forEach((result) => {
           if (result.status === 'fulfilled') {
             const { text, sourceName } = result.value;
-            const xmlDoc = parser.parseFromString(text, "text/xml");
+            const xmlDoc = parser.parseFromString(text, 'text/xml');
 
-            if (xmlDoc.getElementsByTagName("parsererror").length) {
+            if (xmlDoc.getElementsByTagName('parsererror').length) {
               console.error(`XML Parse Error for feed: ${sourceName}`);
               return;
             }
 
-            const items = Array.from(xmlDoc.querySelectorAll("item"));
-            const parsedArticles: RssArticle[] = items.map(item => {
-              const getElementText = (tagName: string): string => item.querySelector(tagName)?.textContent ?? '';
+            const items = Array.from(xmlDoc.querySelectorAll('item'));
+            const parsedArticles: RssArticle[] = items.map((item) => {
+              const getElementText = (tagName: string): string =>
+                item.querySelector(tagName)?.textContent ?? '';
 
               const descriptionHTML = getElementText('description');
               const imageUrlMatch = descriptionHTML.match(/<img[^>]+src="([^">]+)"/);
@@ -139,14 +140,16 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
                 link: getElementText('link'),
                 guid: getElementText('guid'),
                 description: descriptionHTML,
-                categories: Array.from(item.querySelectorAll('category')).map(cat => cat.textContent ?? ''),
+                categories: Array.from(item.querySelectorAll('category')).map(
+                  (cat) => cat.textContent ?? ''
+                ),
                 imageUrl,
                 source: sourceName,
               };
             });
             allArticles.push(...parsedArticles);
           } else {
-            console.error("A feed failed to load:", result.reason);
+            console.error('A feed failed to load:', result.reason);
           }
         });
 
@@ -159,10 +162,9 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
           .slice(0, 24); // Fetch more articles for this page
 
         setArticles(sortedArticles);
-
       } catch (err) {
         setError(err instanceof Error ? err.message : 'เกิดข้อผิดพลาดในการดึงข้อมูลข่าวสาร');
-        console.error("News fetch/parse error:", err);
+        console.error('News fetch/parse error:', err);
       } finally {
         setLoading(false);
       }
@@ -177,7 +179,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
         <div className="flex flex-col items-center justify-center gap-3 text-center min-h-[50vh] rounded-3xl bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl p-8">
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" as const }}
+            transition={{ duration: 1, repeat: Infinity, ease: 'linear' as const }}
           >
             <Loader className="h-8 w-8 text-emerald-500" />
           </motion.div>
@@ -220,10 +222,16 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
               <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100 relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent z-10" />
                 <img
-                  src={article.imageUrl || 'https://images.unsplash.com/photo-1586766418252-446cf6345997?q=80&w=800&auto=format&fit=crop'}
+                  src={
+                    article.imageUrl ||
+                    'https://images.unsplash.com/photo-1586766418252-446cf6345997?q=80&w=800&auto=format&fit=crop'
+                  }
                   alt=""
                   className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1586766418252-446cf6345997?q=80&w=800&auto=format&fit=crop'; }}
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      'https://images.unsplash.com/photo-1586766418252-446cf6345997?q=80&w=800&auto=format&fit=crop';
+                  }}
                 />
               </div>
               <div className="flex flex-1 flex-col justify-between p-5 relative z-10">
@@ -232,10 +240,16 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
                     <span className="inline-block rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-2 py-0.5 font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shadow-sm">
                       {article.source}
                     </span>
-                    <span className="text-slate-400 font-medium">{formatDate(article.pubDate)}</span>
+                    <span className="text-slate-400 font-medium">
+                      {formatDate(article.pubDate)}
+                    </span>
                   </div>
-                  <h3 className="text-base font-semibold text-slate-900 line-clamp-3 group-hover:text-emerald-700 transition-colors duration-300">{article.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-3">{stripHtml(article.description)}</p>
+                  <h3 className="text-base font-semibold text-slate-900 line-clamp-3 group-hover:text-emerald-700 transition-colors duration-300">
+                    {article.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-3">
+                    {stripHtml(article.description)}
+                  </p>
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-emerald-600 transition-all duration-300 group-hover:gap-3">
                   <span>อ่านต้นฉบับ</span>
@@ -249,7 +263,6 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
     );
   };
 
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       <SEO
@@ -257,7 +270,12 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
         description="อัปเดตเทรนด์และนวัตกรรมเทคโนโลยีการเกษตรล่าสุดจากทั่วโลก ข่าวเกษตรไฮเทค Smart Farming และ Precision Agriculture"
         keywords="ข่าวเกษตร, AgTech News, เทคโนโลยีการเกษตร, นวัตกรรมเกษตร, Smart Farming, Precision Agriculture"
       />
-      <motion.div variants={pageVariants} initial="hidden" animate="visible" className="relative min-h-screen z-10">
+      <motion.div
+        variants={pageVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative min-h-screen z-10"
+      >
         <div className="relative py-8">
           <Container>
             <div className="inline-block rounded-2xl bg-white/80 backdrop-blur-md shadow-lg border border-white/30 p-1">
@@ -273,14 +291,11 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
             <div className="rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border border-white/40 p-8 mb-10">
               <SectionTitle
                 eyebrow="คลังข่าวสาร"
-                title="เทคโนโลยีการเกษตร (AgTech)"
-                subtitle="อัปเดตเทรนด์และนวัตกรรมการเกษตรล่าสุดจากทั่วโลก"
-                align="left"
+                title="เทคโนโลยีการเกษตร"
+                subtitle="อัปเดตเทรนด์และนวัตกรรมการเกษตรล่าสุด"
               />
             </div>
-            <div className="mt-10">
-              {renderContent()}
-            </div>
+            <div className="mt-10">{renderContent()}</div>
           </Container>
         </main>
       </motion.div>
@@ -289,4 +304,3 @@ const NewsPage: React.FC<NewsPageProps> = ({ onNavigateHome }) => {
 };
 
 export default NewsPage;
-

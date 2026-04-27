@@ -1,16 +1,9 @@
-
-
 import React from 'react';
 import type { Project, NavItem, Contact, Skill } from './types';
 import {
   Calculator,
   BookOpen,
   Map,
-  Mail,
-  Phone,
-  MessageSquare,
-  MapPin,
-  LinkIcon,
   FileText,
   Users,
   Globe,
@@ -25,60 +18,66 @@ import {
   Facebook,
 } from './components/Icons';
 
-export const LOGO_SRC = "https://res.cloudinary.com/dzksawh1d/image/upload/v1758098508/kaset-tambon-logo_vptuy4.png";
+export const LOGO_SRC =
+  'https://res.cloudinary.com/dzksawh1d/image/upload/v1758098508/kaset-tambon-logo_vptuy4.png';
 
 export const CONTACTS: ReadonlyArray<Contact> = [
-  { label: "Facebook", value: "Rebellious Kaset Tambon", href: "https://www.facebook.com/RebelliousKasetTambon", icon: Facebook },
+  {
+    label: 'Facebook',
+    value: 'Rebellious Kaset Tambon',
+    href: 'https://www.facebook.com/RebelliousKasetTambon',
+    icon: Facebook,
+  },
 ];
 
 export const PROJECTS: ReadonlyArray<Project> = [
   {
     icon: <Calculator className="h-6 w-6" aria-hidden />,
-    title: "Crop Cost Lab — เครื่องคิดต้นทุน & จำลองฉากทัศน์",
-    desc: "คำนวณต้นทุนยืดหยุ่น ปรับสมมติฐานปัจจัยการผลิตแบบเรียลไทม์ เหมาะกับงานวางแผนและการให้คำปรึกษา",
-    href: "https://agrilabcost-ai.vercel.app/",
-    tag: "เว็บเครื่องมือ",
-    category: "tool",
+    title: 'Crop Cost Lab — เครื่องคิดต้นทุน & จำลองฉากทัศน์',
+    desc: 'คำนวณต้นทุนยืดหยุ่น ปรับสมมติฐานปัจจัยการผลิตแบบเรียลไทม์ เหมาะกับงานวางแผนและการให้คำปรึกษา',
+    href: 'https://agrilabcost-ai.vercel.app/',
+    tag: 'เว็บเครื่องมือ',
+    category: 'tool',
   },
   {
     icon: <BookOpen className="h-6 w-6" aria-hidden />,
-    title: "คลังความรู้เกษตร — Infographic",
-    desc: "ศูนย์รวมอินโฟกราฟิกและความรู้ที่คัดสรร สั้น กระชับ เอาไปใช้สื่อสารกับเกษตรกรและเครือข่ายได้ทันที",
-    href: "https://kasetinfo.netlify.app/",
-    tag: "องค์ความรู้",
-    category: "knowledge",
+    title: 'คลังความรู้เกษตร — Infographic',
+    desc: 'ศูนย์รวมอินโฟกราฟิกและความรู้ที่คัดสรร สั้น กระชับ เอาไปใช้สื่อสารกับเกษตรกรและเครือข่ายได้ทันที',
+    href: 'https://kasetinfo.netlify.app/',
+    tag: 'องค์ความรู้',
+    category: 'knowledge',
   },
   {
     icon: <Map className="h-6 w-6" aria-hidden />,
-    title: "ข้อมูลพื้นที่และการเพาะปลูก — จังหวัดฉะเชิงเทรา",
-    desc: "แดชบอร์ดสรุปข้อมูลพื้นที่ปลูก ผลผลิต และประเด็นสำคัญระดับอำเภอ-ตำบล ใช้ประกอบการตัดสินใจเชิงพื้นที่",
-    href: "https://dashboardcs.netlify.app/",
-    tag: "แดชบอร์ด",
-    category: "dashboard",
+    title: 'ข้อมูลพื้นที่และการเพาะปลูก — จังหวัดฉะเชิงเทรา',
+    desc: 'แดชบอร์ดสรุปข้อมูลพื้นที่ปลูก ผลผลิต และประเด็นสำคัญระดับอำเภอ-ตำบล ใช้ประกอบการตัดสินใจเชิงพื้นที่',
+    href: 'https://dashboardcs.netlify.app/',
+    tag: 'แดชบอร์ด',
+    category: 'dashboard',
   },
   {
     icon: <FileText className="h-6 w-6" aria-hidden />,
-    title: "DASHBOARD ข้าวนาปีฉะเชิงเทรา ปี 2568/69",
-    desc: "แดชบอร์ดสรุปข้อมูลการเพาะปลูกข้าวนาปีในจังหวัดฉะเชิงเทรา ปี 2568/69 แสดงภาพรวมพื้นที่ ผลผลิต และแนวโน้มสำคัญ",
-    href: "https://lookerstudio.google.com/u/0/reporting/b1202125-af47-4308-bfbc-7b47aaf1957a/page/page_12345",
-    tag: "แดชบอร์ด",
-    category: "dashboard",
+    title: 'DASHBOARD ข้าวนาปีฉะเชิงเทรา ปี 2568/69',
+    desc: 'แดชบอร์ดสรุปข้อมูลการเพาะปลูกข้าวนาปีในจังหวัดฉะเชิงเทรา ปี 2568/69 แสดงภาพรวมพื้นที่ ผลผลิต และแนวโน้มสำคัญ',
+    href: 'https://lookerstudio.google.com/u/0/reporting/b1202125-af47-4308-bfbc-7b47aaf1957a/page/page_12345',
+    tag: 'แดชบอร์ด',
+    category: 'dashboard',
   },
   {
     icon: <Facebook className="h-6 w-6" aria-hidden />,
-    title: "กลุ่ม Facebook: AI for Kaset Tambon",
-    desc: "ชุมชนสำหรับแลกเปลี่ยนความรู้และประสบการณ์การใช้ AI และเทคโนโลยีดิจิทัลในงานส่งเสริมการเกษตร",
-    href: "https://www.facebook.com/groups/aiforkasettambon",
-    tag: "ชุมชนออนไลน์",
-    category: "knowledge",
+    title: 'กลุ่ม Facebook: AI for Kaset Tambon',
+    desc: 'ชุมชนสำหรับแลกเปลี่ยนความรู้และประสบการณ์การใช้ AI และเทคโนโลยีดิจิทัลในงานส่งเสริมการเกษตร',
+    href: 'https://www.facebook.com/groups/aiforkasettambon',
+    tag: 'ชุมชนออนไลน์',
+    category: 'knowledge',
   },
   {
     icon: <BookOpen className="h-6 w-6" aria-hidden />,
-    title: "คู่มือทะเบียนเกษตรกร ปี 2568 (ฉบับดิจิทัล)",
-    desc: "ขั้นตอน, หลักเกณฑ์, และเงื่อนไขต่างๆ เกี่ยวกับการขึ้นทะเบียนเกษตรกรได้อย่างสะดวกและรวดเร็ว",
-    href: "https://farmer-reg.netlify.app/",
-    tag: "องค์ความรู้",
-    category: "knowledge",
+    title: 'คู่มือทะเบียนเกษตรกร ปี 2568 (ฉบับดิจิทัล)',
+    desc: 'ขั้นตอน, หลักเกณฑ์, และเงื่อนไขต่างๆ เกี่ยวกับการขึ้นทะเบียนเกษตรกรได้อย่างสะดวกและรวดเร็ว',
+    href: 'https://farmer-reg.netlify.app/',
+    tag: 'องค์ความรู้',
+    category: 'knowledge',
   },
 ];
 
@@ -163,13 +162,13 @@ export const SKILLS: ReadonlyArray<Skill> = [
   },
 ];
 
-
 export const NAV_ITEMS: ReadonlyArray<NavItem> = [
-  { href: "#projects", label: "โปรเจกต์" },
-  { page: "news", label: "ข่าวสาร AgTech" },
-  { page: "aitools", label: "เครื่องมือ AI" },
-  { page: "faq", label: "FAQ เกษตร" },
-  { href: "#about-me", label: "เกี่ยวกับฉัน" },
+<<<<<<< HEAD
+  { href: '#projects', label: 'โปรเจกต์' },
+  { page: 'news', label: 'ข่าวสาร AgTech' },
+  { page: 'aitools', label: 'เครื่องมือ AI' },
+  { page: 'faq', label: 'FAQ เกษตร' },
+  { href: '#about-me', label: 'เกี่ยวกับฉัน' },
 ];
 
 export const HERO_STATS: ReadonlyArray<{ label: string; value: number; suffix: string }> = [

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Sparkles } from '../Icons';
 
@@ -6,21 +5,20 @@ interface SectionTitleProps {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  align?: "left" | "center";
   className?: string;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ eyebrow, title, subtitle, align = "center", className }) => (
-  <div className={`mb-10 text-center md:mb-16 ${className}`}>
+const SectionTitle: React.FC<SectionTitleProps> = ({ eyebrow, title, subtitle, className }) => (
+  <div className={`mb-8 text-center ${className}`}>
     {eyebrow && (
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-agri-50 px-3 py-1 text-xs font-medium text-agri-700 ring-1 ring-inset ring-agri-600/20">
-        <Sparkles className="h-4 w-4 text-agri-500" aria-hidden />
-        <span className="uppercase tracking-wide font-display">{eyebrow}</span>
+      <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-900/30 px-3 py-1 text-[11px] font-medium text-emerald-300">
+        <Sparkles className="h-3 w-3 text-emerald-500" />
+        <span className="uppercase tracking-wide">{eyebrow}</span>
       </div>
     )}
-    <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-5xl font-display">{title}</h2>
+    <h2 className="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl">{title}</h2>
     {subtitle && (
-      <p className="mt-4 text-balance text-base leading-relaxed text-slate-600 font-sans md:text-lg">{subtitle}</p>
+      <p className="mx-auto mt-2 max-w-3xl text-sm text-slate-400 md:text-base">{subtitle}</p>
     )}
   </div>
 );

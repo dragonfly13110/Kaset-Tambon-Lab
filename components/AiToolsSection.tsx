@@ -1,242 +1,139 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import SectionTitle from './ui/SectionTitle';
-import Button from './ui/Button';
 import {
-  Camera,
   Satellite,
   Wind,
   FileText,
   Paintbrush,
   Sparkles,
   BarChart3,
-  Component,
-  Type,
-  ArrowRight,
-  Brain,
-  Bot,
   Leaf,
+  Bot,
+  ExternalLink,
 } from './Icons';
 
 interface AiToolsSectionProps {
   onNavigateToAITools?: () => void;
 }
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] as const }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: 'easeOut' as const }
-  }
-};
-
 const toolCategories = [
   {
-    title: 'วินิจฉัยโรค/แมลงด้วย AI',
-    description: 'Plantix (800 อาการ/60 พืช), Agrio + ดาวเทียม, AgroScout โดรน - ระบุโรค 90%+ พร้อมพยากรณ์การระบาดล่วงหน้า',
-    icon: Camera,
-    color: 'from-emerald-500 to-teal-500',
-    badge: '🔥 2026 Trending'
-  },
-  {
-    title: 'ดาวเทียม & โดรน AI',
-    description: 'FlyPix AI, Taranis, OneSoil + BBLeap (Precision Spray), Farmonaut - สแกน NDVI/สุขภาพพืชเรียลไทม์ ฉีดพ่นเฉพาะจุด',
+    title: 'AgriNEXT (NECTEC)',
+    description: 'แพลตฟอร์มเกษตรแม่นยำ IoT + ดาวเทียม + AI',
     icon: Satellite,
-    color: 'from-blue-500 to-cyan-500',
-    badge: '🛰️ Precision Ag'
+    href: 'https://www.nstda.or.th/home/news_post/s-and-t-implementation-agrinext/',
   },
   {
-    title: 'พยากรณ์อากาศ AI แม่นยำ',
-    description: 'GenCast (Google) 15 วัน 50 สถานการณ์, GraphCast 10 วัน, Pangu-Weather - Open Source พยากรณ์เฉพาะพื้นที่',
+    title: 'HandySense B-Farm',
+    description: 'Smart Farming จาก NECTEC ควบคุมฟาร์มอัตโนมัติ',
+    icon: Leaf,
+    href: 'https://www.nationthailand.com/news/general/40046572',
+  },
+  {
+    title: 'Farmonaut',
+    description: 'ดาวเทียม + AI ติดตามสุขภาพพืช Blockchain Traceability',
+    icon: Satellite,
+    href: 'https://farmonaut.com/',
+  },
+  {
+    title: 'GenCast (Google)',
+    description: 'AI พยากรณ์อากาศ 15 วัน จาก Google DeepMind',
     icon: Wind,
-    color: 'from-sky-500 to-blue-500',
-    badge: '⚡ AI Weather'
+    href: 'https://deepmind.google/discover/blog/gencast-a-diffusion-model-for-accurate-weather-forecasting/',
   },
   {
     title: 'GPT-5.4 & Gemini 3.1 Pro',
-    description: 'Agentic AI: GPT-5.4 (มี.ค. 2026), Gemini 3.1 Pro, Claude Sonnet 4.6 - วิเคราะห์ภาพ/วางแผนเกษตร 24/7 ด้วย Multi-step Reasoning',
+    description: 'Agentic AI วิเคราะห์ภาพโรคพืช วางแผนเกษตร 24/7',
     icon: Bot,
-    color: 'from-violet-500 to-purple-500',
-    badge: '🤖 GenAI 2026'
+    href: 'https://chatgpt.com/',
   },
   {
-    title: 'วิเคราะห์ดินและน้ำอัจฉริยะ',
-    description: 'CropX, Gamaya, IoT Sensors ใหม่ - วัดสุขภาพดิน ความชื้น Carbon + VRT ลดปุ๋ย 36-60% รักษาผลผลิต',
+    title: 'CropX & Gamaya',
+    description: 'วิเคราะห์ดินเรียลไทม์ + VRT ลดปุ๋ย 36-60%',
     icon: Leaf,
-    color: 'from-green-500 to-emerald-500',
-    badge: '💧 Smart Soil'
+    href: 'https://www.cropx.com/',
   },
   {
-    title: 'เครื่องจักร AI อัตโนมัติ',
-    description: 'John Deere See & Spray Ultimate, FarmWise Titan, หุ่นยนต์เก็บเกี่ยว - Autonomous Farming ครบวงจร ลดแรงงาน 70%+',
-    icon: Component,
-    color: 'from-orange-500 to-red-500',
-    badge: '🤖 Autonomous'
+    title: 'Nano Banana 2 + Canva AI',
+    description: 'สร้างสื่อเกษตร อินโฟกราฟิก โปสเตอร์',
+    icon: Paintbrush,
+    href: 'https://www.canva.com/',
   },
   {
     title: 'Digital Twin + Agentic AI',
-    description: 'AI Agent จัดการฟาร์มอัตโนมัติแบบ end-to-end: วิเคราะห์ข้อมูล วางแผน และสั่งการ ไม่ต้องป้อนคำสั่งทีละขั้น',
+    description: 'AI Agent จัดการฟาร์มอัตโนมัติ end-to-end',
     icon: BarChart3,
-    color: 'from-indigo-500 to-purple-500',
-    badge: '🆕 Agentic 2026'
+    href: '#',
   },
   {
-    title: 'สร้างสื่อ/อินโฟกราฟิก AI',
-    description: 'Nano Banana 2 (Gemini 3.1 Flash Image), Adobe Firefly 3, Canva AI - สร้างสื่อเกษตรสวยงามได้ในไม่กี่วินาที',
-    icon: Paintbrush,
-    color: 'from-pink-500 to-rose-500',
-    badge: '🎨 Nano Banana 2'
-  },
-  {
-    title: 'AgriLLM & AI เฉพาะทาง',
-    description: 'LLM เกษตรเฉพาะทาง + Generative AI เป็นที่ปรึกษาเกษตรอัจฉริยะ วิเคราะห์สภาพพื้นที่ เปรียบเทียบสถานการณ์',
-    icon: Brain,
-    color: 'from-teal-500 to-cyan-500',
-    badge: '🧠 AgriAI'
+    title: 'Blockchain Traceability',
+    description: 'ติดตามสินค้าเกษตร ฟาร์มถึงผู้บริโภค GAP, Organic',
+    icon: FileText,
+    href: 'https://farmonaut.com/',
   },
 ];
 
 const AiToolsSection: React.FC<AiToolsSectionProps> = ({ onNavigateToAITools }) => {
   return (
-    <motion.section
-      id="ai-tools"
-      className="relative py-10 md:py-12"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-    >
+    <section id="ai-tools" className="relative py-6 md:py-8">
       <Container>
         <SectionTitle
-          eyebrow="อัพเดทใหม่ มี.ค. 2026"
-          title="คลังเครื่องมือ AI เพื่อเกษตรตำบล"
-          subtitle="รวมเทคโนโลยี AI ล่าสุดที่กำลังเปลี่ยนโฉมการเกษตรทั่วโลก - ยุค Agentic AI & GPT-5.4"
+          eyebrow="เมษายน 2026"
+          title="เครื่องมือ AI"
+          subtitle="เทคโนโลยี AI ล่าสุดที่เปลี่ยนโฉมการเกษตร"
         />
 
-        {/* Highlight Banner */}
-        <motion.div
-          className="mt-6 p-3 rounded-2xl bg-gradient-to-r from-agri-500/10 via-tech-500/10 to-purple-500/10 border border-agri-200/50 text-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-slate-700">
-            🚀 <span className="font-semibold text-agri-700">เทรนด์ มี.ค. 2026:</span>{' '}
-            <span className="text-tech-600 font-medium">GPT-5.4</span>,{' '}
-            <span className="text-tech-600 font-medium">Gemini 3.1 Pro</span>,{' '}
-            <span className="text-tech-600 font-medium">Claude Sonnet 4.6</span>,{' '}
-            <span className="text-tech-600 font-medium">Nano Banana 2</span>,{' '}
-            <span className="text-tech-600 font-medium">Agentic AI</span>
-          </p>
-        </motion.div>
-
-        {/* Stats Banner */}
-        <motion.div
-          className="mt-4 flex flex-wrap justify-center gap-6 text-center"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          <div className="px-4 py-2 rounded-xl bg-white/80 border border-surface-200 shadow-sm">
-            <div className="text-2xl font-bold text-agri-600">$46.6B</div>
-            <div className="text-xs text-slate-500">ตลาด AI เกษตร 2034</div>
-          </div>
-          <div className="px-4 py-2 rounded-xl bg-white/80 border border-surface-200 shadow-sm">
-            <div className="text-2xl font-bold text-tech-600">70%+</div>
-            <div className="text-xs text-slate-500">ฟาร์มใช้ AI พยากรณ์ 2026</div>
-          </div>
-          <div className="px-4 py-2 rounded-xl bg-white/80 border border-surface-200 shadow-sm">
-            <div className="text-2xl font-bold text-purple-600">36-60%</div>
-            <div className="text-xs text-slate-500">ลดปุ๋ยด้วย VRT/AI</div>
-          </div>
-        </motion.div>
-
-        {/* Category Grid */}
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {toolCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              className="group relative overflow-hidden rounded-2xl border border-surface-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-agri-200 hover:shadow-xl hover:-translate-y-2 card-shine"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              {/* Badge */}
-              {category.badge && (
-                <span className="absolute top-4 right-4 text-xs font-medium px-2 py-1 rounded-full bg-gradient-to-r from-agri-50 to-tech-50 text-agri-700 border border-agri-200/50">
-                  {category.badge}
-                </span>
-              )}
-
-              {/* Icon */}
-              <motion.div
-                className={`inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${category.color} text-white shadow-lg mb-4`}
-                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                transition={{ duration: 0.5 }}
+        <div className="mx-auto max-w-2xl">
+          <div className="rounded-xl border border-white/10 bg-slate-900/50 backdrop-blur-md overflow-hidden shadow-xl">
+            {toolCategories.map((tool, index) => (
+              <a
+                key={tool.title}
+                href={tool.href}
+                target={tool.href.startsWith('http') ? '_blank' : undefined}
+                rel={tool.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className={`group flex items-center gap-3 px-4 py-3 transition-colors hover:bg-slate-800/50 ${
+                  index !== toolCategories.length - 1 ? 'border-b border-white/5' : ''
+                }`}
               >
-                <category.icon className="h-7 w-7" />
-              </motion.div>
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-slate-800 text-slate-400 group-hover:bg-emerald-900/30 group-hover:text-emerald-400 transition-colors">
+                  <tool.icon className="h-4 w-4" />
+                </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-agri-600 transition-colors">{category.title}</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">{category.description}</p>
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-medium text-slate-200 group-hover:text-emerald-400 truncate">
+                    {tool.title}
+                  </div>
+                  <div className="text-xs text-slate-400 truncate">
+                    {tool.description}
+                  </div>
+                </div>
 
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-agri-500/5 to-tech-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+                <svg className="h-4 w-4 text-slate-600 group-hover:text-emerald-500 transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+              </a>
+            ))}
+          </div>
 
-              {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-agri-400/20 to-tech-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-            </motion.div>
-          ))}
+          {onNavigateToAITools && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={onNavigateToAITools}
+                className="inline-flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+              >
+                ดูเครื่องมือทั้งหมด
+                <ExternalLink className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* CTA Button */}
-        {onNavigateToAITools && (
-          <motion.div
-            className="mt-14 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <Button onClick={onNavigateToAITools} variant="primary" className="px-10 py-4 text-base shadow-lg shadow-agri-500/30 hover:shadow-xl hover:shadow-agri-500/40 glow-agri-hover">
-              <Sparkles className="h-5 w-5" />
-              <span>ดูเครื่องมือ AI ทั้งหมด + ลิงก์ดาวน์โหลด</span>
-              <ArrowRight className="h-5 w-5" />
-            </Button>
-          </motion.div>
-        )}
-
-        {/* Info Note */}
-        <motion.div
-          className="mt-8 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          <p className="text-sm text-slate-500">
-            💡 อัพเดทล่าสุด: มีนาคม 2026 | GPT-5.4, Gemini 3.1 Pro, GenCast, Nano Banana 2 | ยุค Agentic AI เกษตร
+        <div className="mt-6 text-center">
+          <p className="text-xs text-slate-400 dark:text-slate-500">
+            💡 อัพเดท: เมษายน 2026 | Agriculture 4.0 Thailand
           </p>
-        </motion.div>
+        </div>
       </Container>
-    </motion.section>
+    </section>
   );
 };
 

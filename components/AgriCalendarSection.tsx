@@ -76,7 +76,7 @@ const AgriCalendarSection: React.FC = () => {
   return (
     <motion.section
       id="agri-calendar"
-      className="relative py-10 md:py-12"
+      className="relative py-6 md:py-8"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

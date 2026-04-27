@@ -27,7 +27,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ onNavigateToFAQ }) => {
   return (
     <motion.section
       id="faq"
-      className="relative py-10 md:py-12"
+      className="relative py-6 md:py-8"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

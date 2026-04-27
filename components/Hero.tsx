@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import { ChevronDown } from './Icons';
@@ -72,72 +72,27 @@ const TypingText: React.FC<{ texts: string[]; className?: string }> = ({ texts, 
     </span>
   );
 };
-
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative overflow-hidden py-20 md:py-32">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Floating Shapes */}
-        <motion.div
-          className="absolute top-20 left-10 w-20 h-20 rounded-full bg-gradient-to-br from-agri-300/30 to-agri-400/20 blur-xl"
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 15, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-tech-300/30 to-tech-400/20 blur-xl"
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -20, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-purple-300/20 to-pink-300/20 blur-xl"
-          animate={{
-            y: [0, -25, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Geometric Shapes */}
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-4 h-4 bg-agri-400/40 rotate-45"
-          animate={{ rotate: [45, 225, 45], scale: [1, 1.5, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-tech-400/40 rounded-full"
-          animate={{ y: [0, -50, 0], opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
+    <section id="hero" className="relative overflow-hidden py-14 md:py-24">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            'radial-gradient(800px circle at 20% 5%, rgba(16,185,129,.18), transparent 48%), radial-gradient(700px circle at 85% 30%, rgba(14,165,233,.14), transparent 48%)',
+        }}
+      />
       <Container className="relative z-10">
-        <div className="mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+        <div className="mx-auto max-w-3xl text-center">
+          {/* Badge */}
+          <motion.span
+            className="mb-4 inline-block rounded-full border border-emerald-500/30 bg-emerald-900/30 px-3.5 py-1 text-xs font-medium text-emerald-300"
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.4 }}
           >
-            {/* Badge with Glow */}
-            <motion.span
-              className="inline-block rounded-full bg-gradient-to-r from-agri-50 to-tech-50 px-5 py-2 text-sm font-medium text-agri-700 ring-1 ring-inset ring-agri-600/20 mb-8 shadow-lg"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <span className="mr-2">🌾</span>
-              นักส่งเสริมการเกษตรยุคใหม่
-              <span className="ml-2">🤖</span>
-            </motion.span>
+            🌾 นักส่งเสริมการเกษตร
+          </motion.span>
 
             {/* Main Headline */}
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl font-display">
@@ -159,16 +114,15 @@ const Hero: React.FC = () => {
               </motion.span>
             </h1>
 
-            {/* Subtitle */}
-            <motion.p
-              className="mt-8 text-lg leading-8 text-slate-600 md:text-xl max-w-2xl mx-auto font-sans"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              พื้นที่ทดลองและพัฒนานวัตกรรมดิจิทัลเพื่อการเกษตร โดยนักวิชาการส่งเสริมการเกษตร
-              มุ่งเน้นการประยุกต์ใช้ AI และ Data เพื่อความยั่งยืน
-            </motion.p>
+          {/* Subtitle */}
+          <motion.p
+            className="mx-auto mt-4 max-w-2xl text-base text-slate-300 md:text-lg"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
+          >
+            ทดลองและพัฒนานวัตกรรมดิจิทัลเพื่อการเกษตร โดยประยุกต์ใช้ AI และ Data
+          </motion.p>
 
             {/* Stats */}
             <motion.div
@@ -222,31 +176,19 @@ const Hero: React.FC = () => {
         </div>
       </Container>
 
-      {/* Decorative Center Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-agri-200/20 to-tech-200/20 rounded-full blur-3xl -z-10 pointer-events-none" />
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-agri-400/10 rounded-full blur-3xl pointer-events-none -z-10"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       {/* Scroll Indicator */}
       <motion.a
         href="#projects"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-agri-600 transition-colors group"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 text-slate-500 hover:text-emerald-400 transition-colors"
       >
-        <span className="text-[10px] font-sans tracking-[0.2em] uppercase group-hover:text-agri-500 transition-colors">เลื่อนเพื่อสำรวจ</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="h-5 w-5" />
+          <ChevronDown className="h-4 w-4" />
         </motion.div>
       </motion.a>
     </section>
