@@ -439,37 +439,39 @@ body {
     transform-style: preserve-3d;
   }
 
-  /* Cursor Glow */
-  .cursor-glow {
-    pointer-events: none;
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(14, 165, 233, 0.1) 30%, transparent 70%);
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    mix-blend-mode: screen;
-    transition: opacity 0.3s ease;
-  }
+/* Cursor Glow */
+.cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(14, 165, 233, 0.1) 30%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+  will-change: transform, opacity;
+}
 
-  /* Particle Container */
-  .particles-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1;
-  }
+/* Particle Container */
+.particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
 
-  .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: linear-gradient(135deg, #10b981, #0ea5e9);
-    border-radius: 50%;
-    opacity: 0.6;
-  }
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+  border-radius: 50%;
+  opacity: 0.6;
+  will-change: transform, opacity;
+}
 
   /* Wave Divider */
   .wave-divider {

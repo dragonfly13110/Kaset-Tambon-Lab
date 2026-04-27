@@ -171,3 +171,15 @@ export const NAV_ITEMS: ReadonlyArray<NavItem> = [
   { page: "faq", label: "FAQ เกษตร" },
   { href: "#about-me", label: "เกี่ยวกับฉัน" },
 ];
+
+export const HERO_STATS: ReadonlyArray<{ label: string; value: number; suffix: string }> = [
+  { label: 'เครื่องมือ AI', value: 15, suffix: '+' },
+  { label: 'ผู้ใช้งาน', value: 500, suffix: '+' },
+  { label: 'เกษตรกร', value: 1000, suffix: '+' },
+];
+
+export const HERO_TYPING_TEXTS: ReadonlyArray<string> = [
+  'ด้วยเทคโนโลยีสมัยใหม่',
+  'ด้วย AI และ Data',
+  'ด้วยนวัตกรรมดิจิทัล',
+];

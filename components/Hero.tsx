@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Container from './ui/Container';
 import Button from './ui/Button';
 import { ChevronDown } from './Icons';
+import { HERO_STATS, HERO_TYPING_TEXTS } from '../constants';
 
 // Animated Counter Component
 const AnimatedCounter: React.FC<{ end: number; duration?: number; suffix?: string }> = ({
@@ -71,18 +72,6 @@ const TypingText: React.FC<{ texts: string[]; className?: string }> = ({ texts, 
     </span>
   );
 };
-
-const stats = [
-  { label: 'เครื่องมือ AI', value: 15, suffix: '+' },
-  { label: 'ผู้ใช้งาน', value: 500, suffix: '+' },
-  { label: 'เกษตรกร', value: 1000, suffix: '+' },
-];
-
-const typingTexts = [
-  'ด้วยเทคโนโลยีสมัยใหม่',
-  'ด้วย AI และ Data',
-  'ด้วยนวัตกรรมดิจิทัล',
-];
 
 const Hero: React.FC = () => {
   return (
@@ -166,7 +155,7 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <TypingText texts={typingTexts} />
+                <TypingText texts={HERO_TYPING_TEXTS} />
               </motion.span>
             </h1>
 
@@ -188,7 +177,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
             >
-              {stats.map((stat, index) => (
+              {HERO_STATS.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   className="text-center"

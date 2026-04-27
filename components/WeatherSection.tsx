@@ -36,13 +36,31 @@ const WeatherSection: React.FC = () => {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
-      if (status === 'loading') {
+    setIsMounted(true);
+    let loadingTimeout: ReturnType<typeof setTimeout>;
+    let didSetData = false;
+
+    const setWeatherDataSafe = (data: WeatherData) => {
+      if (isMounted && !didSetData) {
+        didSetData = true;
+        setWeatherData(data);
+      }
+    };
+
+    const setStatusSafe = (newStatus: 'loading' | 'success' | 'error') => {
+      if (isMounted) {
+        setStatus(newStatus);
+      }
+    };
+
+    loadingTimeout = setTimeout(() => {
+      if (isMounted && !didSetData) {
         setWeatherData(MOCK_WEATHER_DATA);
         setError("ไม่สามารถเข้าถึงตำแหน่งได้ในเวลาที่กำหนด กำลังแสดงข้อมูลเริ่มต้น");
-        setStatus('error');
+        setStatusSafe('error');
       }
     }, 12000);
 
@@ -50,29 +68,41 @@ const WeatherSection: React.FC = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           clearTimeout(loadingTimeout);
-          setWeatherData({
-            ...MOCK_WEATHER_DATA,
-            location: "ตำแหน่งปัจจุบันของคุณ",
-          });
-          setStatus('success');
+          if (isMounted && !didSetData) {
+            didSetData = true;
+            setWeatherData({
+              ...MOCK_WEATHER_DATA,
+              location: "ตำแหน่งปัจจุบันของคุณ",
+            });
+            setStatusSafe('success');
+          }
         },
         (geoError) => {
           clearTimeout(loadingTimeout);
           console.error("Geolocation error:", geoError.message);
-          setWeatherData(MOCK_WEATHER_DATA);
-          setError("ไม่สามารถเข้าถึงตำแหน่งได้ กำลังแสดงข้อมูลเริ่มต้น");
-          setStatus('error');
+          if (isMounted && !didSetData) {
+            didSetData = true;
+            setWeatherData(MOCK_WEATHER_DATA);
+            setError("ไม่สามารถเข้าถึงตำแหน่งได้ กำลังแสดงข้อมูลเริ่มต้น");
+            setStatusSafe('error');
+          }
         },
         { timeout: 10000 }
       );
     } else {
       clearTimeout(loadingTimeout);
-      setWeatherData(MOCK_WEATHER_DATA);
-      setError("เบราว์เซอร์ไม่รองรับการระบุตำแหน่ง");
-      setStatus('error');
+      if (isMounted && !didSetData) {
+        didSetData = true;
+        setWeatherData(MOCK_WEATHER_DATA);
+        setError("เบราว์เซอร์ไม่รองรับการระบุตำแหน่ง");
+        setStatusSafe('error');
+      }
     }
 
-    return () => clearTimeout(loadingTimeout);
+    return () => {
+      clearTimeout(loadingTimeout);
+      setIsMounted(false);
+    };
   }, []);
 
   const renderLoading = () => (

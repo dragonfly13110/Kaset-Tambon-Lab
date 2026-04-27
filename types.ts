@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from 'react';
+import type { FC, SVGProps, ReactNode } from 'react';
 
 export type Category = "all" | "tool" | "knowledge" | "dashboard";
 
@@ -9,7 +9,7 @@ export interface NavItem {
 }
 
 export interface Project {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   desc: string;
   href: string;
